@@ -1,0 +1,13 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/src/FashionModeling.DAL/bin/Debug
+/src/FashionModeling.DAL/obj
+/src/FashionModeling.Models/bin/Debug
+/src/FashionModeling/bin
+/src/FashionModeling/obj
+/src/FashionModeling.Models/obj
+/src/FashionModeling.Services/bin/Debug
+/src/FashionModeling.Services/obj
+/src/packages
