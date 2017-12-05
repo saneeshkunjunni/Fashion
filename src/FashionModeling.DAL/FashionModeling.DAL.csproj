@@ -94,13 +94,15 @@
     <Compile Include="Mappings\CommonMapping.cs" />
     <Compile Include="Mappings\GalleryMapping.cs" />
     <Compile Include="Mappings\JobApplicationMapping.cs" />
+    <Compile Include="Mappings\JobRolesMapping.cs" />
     <Compile Include="Mappings\JobsMapping.cs" />
+    <Compile Include="Mappings\SubscriptionMapping.cs" />
     <Compile Include="Mappings\TagMapping.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository.cs" />
     <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config">

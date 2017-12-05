@@ -15,14 +15,14 @@ namespace FashionModeling.DAL.Mappings
         {
             this.HasKey(x => x.Id);
             this.Property(x => x.CreatedBy);
-            this.Property(x => x.CreatedDate);
+            this.Property(x => x.CreatedUTCDate);
             this.Property(x => x.Description);
             this.Property(x => x.Id);
             this.Property(x => x.IsActive);
             this.Property(x => x.IsFeatured);
             this.Property(x => x.IsSlider);
             this.Property(x => x.ModifiedBy);
-            this.Property(x => x.ModifiedDate);
+            this.Property(x => x.ModifiedUTCDate);
             this.Property(x => x.Url);
             this.HasRequired(x => x.CreatedUser).WithMany(p => p.Galleries).HasForeignKey(x => x.CreatedBy).WillCascadeOnDelete(true);
             this.HasRequired(x => x.ModifiedUser).WithMany(p => p.ModifiedGalleries).HasForeignKey(x => x.ModifiedBy).WillCascadeOnDelete(false);

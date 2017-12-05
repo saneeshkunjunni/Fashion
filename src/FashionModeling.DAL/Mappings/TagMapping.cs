@@ -14,10 +14,10 @@ namespace FashionModeling.DAL.Mappings
         {
             this.HasKey(x => x.Id);
             this.Property(x => x.CreatedBy);
-            this.Property(x => x.CreatedDate);
+            this.Property(x => x.CreatedUTCDate);
             this.Property(x => x.Id);
             this.Property(x => x.IsActive);
-            this.Property(x => x.ModifiedDate);
+            this.Property(x => x.ModifiedUTCDate);
             this.Property(x => x.ModifiedBy);
             this.Property(x => x.TagName);
             this.Property(x => x.TagType);

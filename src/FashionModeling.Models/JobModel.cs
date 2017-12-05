@@ -8,7 +8,6 @@ namespace FashionModeling.Models
 {
     public class JobRegisterModel
     {
-
         public string JobTitle { get; set; }
         public Guid ShootingAddressId { get; set; }
         public DateTime ShootingDateUTC { get; set; }

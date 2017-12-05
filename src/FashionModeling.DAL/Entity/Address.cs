@@ -15,5 +15,7 @@ namespace FashionModeling.DAL.Entity
         public string State { get; set; }
         public string Suburb { get; set; }
         public bool Status { get; set; }
+
+        public virtual ICollection<Jobs> Jobs { get; set; }
     }
 }

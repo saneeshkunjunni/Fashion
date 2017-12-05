@@ -33,6 +33,9 @@ namespace FashionModeling.DAL.Entity
 
         public virtual ICollection<JobApplications> JobApplications { get; set; }
         public virtual ICollection<JobApplications> ModifiedJobApplications { get; set; }
-        
+
+        public virtual ICollection<JobRoles> JobRoles { get; set; }
+        public virtual ICollection<JobRoles> ModifiedJobRoles { get; set; }
+
     }
 }

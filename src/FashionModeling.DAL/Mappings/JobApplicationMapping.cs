@@ -17,11 +17,11 @@ namespace FashionModeling.DAL.Mappings
             this.Property(x => x.AboutApplicant).IsRequired();
             this.Property(x => x.AppliedFor).IsRequired();
             this.Property(x => x.CreatedBy).IsRequired();
-            this.Property(x => x.CreatedDate).IsRequired();
+            this.Property(x => x.CreatedUTCDate).IsRequired();
             this.Property(x => x.ModifiedBy).IsRequired();
-            this.Property(x => x.ModifiedDate).IsRequired();            
+            this.Property(x => x.ModifiedUTCDate).IsRequired();            
 
-            this.HasRequired(x => x.CreatedUser).WithMany(p => p.JobApplications).HasForeignKey(x => x.CreatedBy).WillCascadeOnDelete(true);
+            this.HasRequired(x => x.CreatedUser).WithMany(p => p.JobApplications).HasForeignKey(x => x.CreatedBy).WillCascadeOnDelete(false);
             this.HasRequired(x => x.ModifiedUser).WithMany(p => p.ModifiedJobApplications).HasForeignKey(x => x.ModifiedBy).WillCascadeOnDelete(false);
         }
     }

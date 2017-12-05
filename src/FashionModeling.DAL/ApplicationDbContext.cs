@@ -18,14 +18,19 @@ namespace FashionModeling.DAL
     {
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
-        { 
+        {
         }
-        public DbSet<Gallery> Gallery { get; set; }
-        public DbSet<Tags> Tags { get; set; }
         public DbSet<Address> Address { get; set; }
-        public DbSet<Jobs> Jobs { get; set; }
-        public DbSet<Common> Common { get; set; }
         public DbSet<CastLocations> CastLocations { get; set; }
+        public DbSet<Common> Common { get; set; }
+        public DbSet<Gallery> Gallery { get; set; }
+        public DbSet<JobApplications> JobApplications { get; set; }
+        public DbSet<JobRoles> JobRoles { get; set; }
+        public DbSet<Jobs> Jobs { get; set; }
+        public DbSet<Subscription> Subscription { get; set; }
+        public DbSet<Tags> Tags { get; set; }
+
+
 
         public static ApplicationDbContext Create()
         {
@@ -34,26 +39,31 @@ namespace FashionModeling.DAL
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Configurations.Add<Gallery>(new GalleryMapping());
-            modelBuilder.Configurations.Add<Tags>(new TagMapping());
             modelBuilder.Configurations.Add<Address>(new AddressMapping());
+            modelBuilder.Configurations.Add<CastLocations>(new CastLocationMapping());
+            modelBuilder.Configurations.Add<Common>(new CommonMapping());
+            modelBuilder.Configurations.Add<Gallery>(new GalleryMapping());
+            modelBuilder.Configurations.Add<JobApplications>(new JobApplicationMapping());
+            modelBuilder.Configurations.Add<JobRoles>(new JobRolesMapping());
+            modelBuilder.Configurations.Add<Jobs>(new JobsMapping());
+            modelBuilder.Configurations.Add<Subscription>(new SubscriptionMapping());
+            modelBuilder.Configurations.Add<Tags>(new TagMapping());
+
+
             modelBuilder.Entity<Gallery>()
                .HasMany<Tags>(s => s.Tags)
                .WithMany(c => c.Galleries)
                .Map(cs =>
                {
-
                    cs.MapRightKey("GalleryRefId");
-                   cs.MapLeftKey("TagRefId");                   
+                   cs.MapLeftKey("TagRefId");
                    cs.ToTable("GalleryTags");
                });
-            //    modelBuilder.Entity<Gallery>().Property(t => t.ModifiedDate).HasComputedColumnSql("GetUtcDate()");
             base.OnModelCreating(modelBuilder);
         }
         public override int SaveChanges()
         {
             var context = ((IObjectContextAdapter)this).ObjectContext;
-
             //Find all Entities that are Added/Modified that inherit from my EntityBase
             IEnumerable<ObjectStateEntry> objectStateEntries =
                 from e in context.ObjectStateManager.GetObjectStateEntries(EntityState.Added | EntityState.Modified)
@@ -68,13 +78,11 @@ namespace FashionModeling.DAL
             foreach (var entry in objectStateEntries)
             {
                 var entityBase = entry.Entity as UserEntity;
-
                 if (entry.State == EntityState.Added)
                 {
-                    entityBase.CreatedDate = currentTime;
+                    entityBase.CreatedUTCDate = currentTime;
                 }
-
-                entityBase.ModifiedDate = currentTime;
+                entityBase.ModifiedUTCDate = currentTime;
             }
 
             return base.SaveChanges();

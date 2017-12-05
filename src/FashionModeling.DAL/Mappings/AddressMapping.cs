@@ -18,13 +18,13 @@ namespace FashionModeling.DAL.Mappings
             this.Property(x => x.AddressMap);
             this.Property(x => x.AreaCode);
             this.Property(x => x.CreatedBy);
-            this.Property(x => x.CreatedDate);                        
+            this.Property(x => x.CreatedUTCDate);                        
             this.Property(x => x.ModifiedBy);
-            this.Property(x => x.ModifiedDate); 
+            this.Property(x => x.ModifiedUTCDate); 
             this.Property(x => x.State);            
             this.Property(x => x.Status);
             this.Property(x => x.Suburb);
-            this.HasRequired(x => x.CreatedUser).WithMany(p => p.Address).HasForeignKey(x => x.CreatedBy).WillCascadeOnDelete(true);
+            this.HasRequired(x => x.CreatedUser).WithMany(p => p.Address).HasForeignKey(x => x.CreatedBy).WillCascadeOnDelete(false);
             this.HasRequired(x => x.ModifiedUser).WithMany(p => p.ModifiedAddress).HasForeignKey(x => x.ModifiedBy).WillCascadeOnDelete(false);
         }
     }

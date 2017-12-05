@@ -18,6 +18,7 @@ namespace FashionModeling.DAL.Entity
         public DateTime CastingExpiryDateUtc { get; set; }
         public string Description { get; set; }
 
+        public virtual Address Address { get; set; }
         public virtual ICollection<JobApplications> JobApplications { get; set; }
         public virtual ICollection<JobRoles> JobRoles { get; set; }
     }
