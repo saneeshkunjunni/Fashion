@@ -78,6 +78,9 @@
     <Compile Include="Entity\Address.cs" />
     <Compile Include="Entity\ApplicationUser.cs" />
     <Compile Include="Entity\BaseEntity.cs" />
+    <Compile Include="Entity\JobApplications.cs" />
+    <Compile Include="Entity\JobRoles.cs" />
+    <Compile Include="Entity\Subscription.cs" />
     <Compile Include="Entity\UserEntity.cs" />
     <Compile Include="Entity\Common.cs" />
     <Compile Include="Entity\Gallery.cs" />
