@@ -8,6 +8,7 @@ namespace FashionModeling.DAL.Entity
 {
     public class JobRoles:UserEntity
     {
+        public Guid JobId { get; set; }
         public string RoleName { get; set; }
         public string Professions { get; set; }
         public string Gender { get; set; }
@@ -15,5 +16,6 @@ namespace FashionModeling.DAL.Entity
         public int AgeTo { get; set; }
         public string BasedIn { get; set; }
         public bool Status { get; set; }
+        public virtual Jobs Job { get; set; }
     }
 }

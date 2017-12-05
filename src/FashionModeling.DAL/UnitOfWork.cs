@@ -11,7 +11,7 @@ namespace FashionModeling
     public class UnitOfWork : IDisposable
     {
         public ApplicationDbContext context = new ApplicationDbContext();
-         
+
 
         private Repository<Gallery> _galleries;
         public Repository<Gallery> Galleries
@@ -24,6 +24,32 @@ namespace FashionModeling
                     this._galleries = new Repository<Gallery>(context);
                 }
                 return _galleries;
+            }
+        }
+        private Repository<Jobs> _jobs;
+        public Repository<Jobs> Jobs
+        {
+            get
+            {
+
+                if (this._jobs == null)
+                {
+                    this._jobs = new Repository<Jobs>(context);
+                }
+                return _jobs;
+            }
+        }
+        private Repository<Address> _address;
+        public Repository<Address> Address
+        {
+            get
+            {
+
+                if (this._address == null)
+                {
+                    this._address = new Repository<Address>(context);
+                }
+                return _address;
             }
         }
         public void Save()

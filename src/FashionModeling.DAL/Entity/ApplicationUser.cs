@@ -28,5 +28,11 @@ namespace FashionModeling.DAL.Entity
         public virtual ICollection<CastLocations> ModifiedCastLocations { get; set; }
         public virtual ICollection<Common> Commons { get; set; }
         public virtual ICollection<Common> ModifiedCommons { get; set; }
+        public virtual ICollection<Jobs> Jobs { get; set; }
+        public virtual ICollection<Jobs> ModifiedJobs { get; set; }
+
+        public virtual ICollection<JobApplications> JobApplications { get; set; }
+        public virtual ICollection<JobApplications> ModifiedJobApplications { get; set; }
+        
     }
 }

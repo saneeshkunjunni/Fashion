@@ -12,14 +12,13 @@ namespace FashionModeling.DAL.Mappings
     {
         public AddressMapping()
         {
-            this.HasKey(x => x.Id);
+            this.HasKey(x => x.Id).Property(x => x.Id).IsRequired();
             this.Property(x => x.AddressLine1);
             this.Property(x => x.AddressLine2);
             this.Property(x => x.AddressMap);
             this.Property(x => x.AreaCode);
             this.Property(x => x.CreatedBy);
-            this.Property(x => x.CreatedDate);            
-            this.Property(x => x.Id);
+            this.Property(x => x.CreatedDate);                        
             this.Property(x => x.ModifiedBy);
             this.Property(x => x.ModifiedDate); 
             this.Property(x => x.State);            
