@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="CastLocationModel.cs" />
     <Compile Include="CommonModel.cs" />
+    <Compile Include="Dropdown.cs" />
     <Compile Include="GalleryModel.cs" />
     <Compile Include="JobModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

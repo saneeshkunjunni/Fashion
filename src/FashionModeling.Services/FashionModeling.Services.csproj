@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\ICommonServices.cs" />
     <Compile Include="Interfaces\IGalleryServices.cs" />
     <Compile Include="Interfaces\IJobServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
