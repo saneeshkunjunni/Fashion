@@ -12,8 +12,8 @@ namespace FashionModeling.Services.Interfaces
         Guid AddCommon(CommonRegisterModel model);
         CommonDetailsModel GetCommonDetails(object id);
         CommonEditModel GetCommonEdit(object id);
-        bool EditCommon(CommonEditModel model);
-        CommonListModel GetCommon(int page, int pageSize);
+        bool EditCommon(CommonEditModel model); 
+        CommonListModel GetCommon(int page, int pageSize,string filter);
 
     }
 }

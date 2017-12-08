@@ -14,7 +14,7 @@ namespace FashionModeling
 
 
         private Repository<Gallery> _galleries;
-        public Repository<Gallery> Galleries
+        public Repository<Gallery> GalleriesRepo
         {
             get
             {
@@ -27,7 +27,7 @@ namespace FashionModeling
             }
         }
         private Repository<Jobs> _jobs;
-        public Repository<Jobs> Jobs
+        public Repository<Jobs> JobsRepo
         {
             get
             {
@@ -40,7 +40,7 @@ namespace FashionModeling
             }
         }
         private Repository<Address> _address;
-        public Repository<Address> Address
+        public Repository<Address> AddressRepo
         {
             get
             {
@@ -52,9 +52,23 @@ namespace FashionModeling
                 return _address;
             }
         }
-        public void Save()
+        private Repository<Common> _common;
+        public Repository<Common> CommonRepo
         {
-            context.SaveChanges();
+            get
+            {
+
+                if (this._common == null)
+                {
+                    this._common = new Repository<Common>(context);
+                }
+                return _common;
+            }
+        }
+        
+        public int Save()
+        {
+           return context.SaveChanges();
         }
 
         private bool disposed = false;

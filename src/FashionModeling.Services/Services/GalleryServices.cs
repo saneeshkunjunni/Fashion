@@ -56,11 +56,11 @@ namespace FashionModeling.Services.Services
                 var result = unitOfwork.Galleries.Get()
                     .Select(x => new GalleryDetailsModel()
                     {
-                        CreatedDate = x.CreatedDate,
+                        CreatedDate = x.CreatedUTCDate,
                         Description = x.Description,
                         Id = x.Id,
                         IsActive = x.IsActive,
-                        ModifiedDate = x.ModifiedDate,
+                        ModifiedDate = x.ModifiedUTCDate,
                         Url = x.Url
                     }).OrderByDescending(x=>x.CreatedDate).ToPagedList<GalleryDetailsModel>(page,pageSize);
 
@@ -79,11 +79,11 @@ namespace FashionModeling.Services.Services
                 var result = unitOfwork.Galleries.Get(filter: x => x.Id == (Guid)id)
                     .Select(x=>new GalleryDetailsModel()
                     {
-                        CreatedDate=x.CreatedDate,
+                        CreatedDate=x.CreatedUTCDate,
                      Description =x.Description   ,
                      Id=x.Id,
                      IsActive=x.IsActive,
-                     ModifiedDate = x.ModifiedDate,
+                     ModifiedDate = x.ModifiedUTCDate,
                      Url =x.Url
                     }).FirstOrDefault();
 

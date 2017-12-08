@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FashionModeling.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -18,6 +19,9 @@ namespace FashionModeling
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            DbInitializer.Initialize(new ApplicationDbContext());
+            Bootstrapper.Initialise();
+
         }
     }
 }

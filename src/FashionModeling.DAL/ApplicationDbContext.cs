@@ -19,6 +19,7 @@ namespace FashionModeling.DAL
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+            
         }
         public DbSet<Address> Address { get; set; }
         public DbSet<CastLocations> CastLocations { get; set; }

@@ -14,7 +14,9 @@ namespace FashionModeling.DAL.Mappings
         {
             this.ToTable("Subscription");
             this.HasKey(x => x.Id).Property(x => x.Id).IsRequired();
+            this.Property(x => x.CreatedUTCDate).IsRequired();
             this.Property(x => x.EmailAddress).IsRequired();
+            this.Property(x => x.ModifiedUTCDate).IsRequired();
             this.Property(x => x.Status).IsRequired();
         }
     }

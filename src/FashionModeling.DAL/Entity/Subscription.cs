@@ -14,6 +14,9 @@ namespace FashionModeling.DAL.Entity
         [Key]
         public long Id { get; set; }
         public string EmailAddress { get; set; }
+        public DateTime CreatedUTCDate { get; set; } = DateTime.UtcNow;
+        public DateTime ModifiedUTCDate { get; set; } = DateTime.UtcNow;
         public bool Status { get; set; }
+
     }
 }

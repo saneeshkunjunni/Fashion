@@ -1,0 +1,34 @@
+@charset "utf-8";
+/* CSS Document */
+
+* { margin: 0px; padding: 0px; border: medium none; outline: medium none !important; list-style: outside none none; font-size: 100%; box-sizing: border-box; }
+*, *:before, *:after { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; outline: none!important; }
+a { text-decoration: none!important; outline: none!important; }
+a img { border: none; }
+a, a:hover, a:active, a:focus, .btn, .close { transition: all 0.2s ease-in-out 0s!important; }
+.btn,.btn:focus,.btn:hover{box-shadow:none;outline:none;}
+
+.fa-wifi{transform:rotate(40deg)}
+.box-btn-sec{width:100%;margin-bottom:15px;}
+.prdcts-table tr th:last-child,.prdcts-table tr td:last-child{width:80px;text-align:center;}
+.prdcts-table tr td:last-child .fa-pencil-square-o{transition: all 0.2s ease-in-out 0s!important;color:#333;}
+.prdcts-table tr td:last-child .fa-pencil-square-o:hover{color:#dd4b39 ;}
+.nav-tabs-custom>.nav-tabs.pull-left {
+    float: none !important;
+}
+.box-body{padding:15px;}
+.add-product-sec{padding:20px 0;}
+.maping-lft,.maping-rght{padding:15px;}
+.maping-lft label,.maping-rght label{width:100%;margin-bottom:10px;text-transform:uppercase;}
+.maping-lft input{box-shadow: none;border:1px solid #d2d6de;display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;}
+.maping-rght .btn-default{border-color: #d2d6de;border-radius:0;}
+.maping-rght .btn-default:hover,.maping-rght .btn-default:focus,.btn-default.active.focus, .btn-default.active:focus, .btn-default.active:hover, .btn-default:active.focus, .btn-default:active:focus, .btn-default:active:hover, .open>.dropdown-toggle.btn-default.focus, .open>.dropdown-toggle.btn-default:focus, .open>.dropdown-toggle.btn-default:hover{background-color: #f4f4f4;border-color: #ddd;outline:none!important;}
+.btn-group.open .dropdown-toggle{box-shadow:none;}
