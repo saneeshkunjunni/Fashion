@@ -10,7 +10,8 @@ namespace FashionModeling.DAL
     {
         public static void Initialize(ApplicationDbContext context)
         {
-            context.Database.CreateIfNotExists();
+            context.Database.CreateIfNotExists();                      
         }
+        
     }
 }

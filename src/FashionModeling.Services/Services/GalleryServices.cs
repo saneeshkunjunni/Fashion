@@ -22,7 +22,7 @@ namespace FashionModeling.Services.Services
                     IsActive = true,
                     Url = model.Url,                    
                 };
-                unitOfwork.Galleries.Insert(result);
+                unitOfwork.GalleriesRepo.Insert(result);
                 unitOfwork.Save();
                 return result.Id;
             }
@@ -36,12 +36,11 @@ namespace FashionModeling.Services.Services
         {
             try
             {
-                var result = unitOfwork.Galleries.Get(filter: x => x.Id ==(Guid)model.Id).FirstOrDefault();
+                var result = unitOfwork.GalleriesRepo.Get(filter: x => x.Id ==(Guid)model.Id).FirstOrDefault();
                 result.Url = model.Url;
                 result.Description = model.Description;
-                unitOfwork.Galleries.Update(result);
-                unitOfwork.Save();
-                return true;
+                unitOfwork.GalleriesRepo.Update(result);
+                return unitOfwork.Save() > 0;                                
             }
             catch (Exception)
             {
@@ -53,7 +52,7 @@ namespace FashionModeling.Services.Services
         {
             try
             {
-                var result = unitOfwork.Galleries.Get()
+                var result = unitOfwork.GalleriesRepo.Get()
                     .Select(x => new GalleryDetailsModel()
                     {
                         CreatedDate = x.CreatedUTCDate,
@@ -76,7 +75,7 @@ namespace FashionModeling.Services.Services
         {
             try
             {
-                var result = unitOfwork.Galleries.Get(filter: x => x.Id == (Guid)id)
+                var result = unitOfwork.GalleriesRepo.Get(filter: x => x.Id == (Guid)id)
                     .Select(x=>new GalleryDetailsModel()
                     {
                         CreatedDate=x.CreatedUTCDate,
@@ -99,7 +98,7 @@ namespace FashionModeling.Services.Services
         {
             try
             {
-                var result = unitOfwork.Galleries.Get(filter: x => x.Id == (Guid)id)
+                var result = unitOfwork.GalleriesRepo.Get(filter: x => x.Id == (Guid)id)
                     .Select(x => new GalleryEditModel()
                     {                         Description = x.Description,
                         Id = x.Id,

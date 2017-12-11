@@ -38,15 +38,26 @@ namespace FashionModeling.Controllers
         public ActionResult Subscriptions()
         {
             return View();
-        } 
+        }
         #endregion
 
         #region JobRoles
-
         public ActionResult JobRoles()
         {
             return View();
-        } 
+        }
+        #endregion
+        #region Tags
+        public ActionResult Tags()
+        {
+            return View();
+        }
+        #endregion
+        #region Users
+        public ActionResult Users()
+        {
+            return View();
+        }
         #endregion
     }
 }

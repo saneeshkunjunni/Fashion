@@ -21,10 +21,21 @@ namespace FashionModeling.Models
     }
     public class JobDetailsModel : JobRegisterModel
     {
-
+        public Guid JobId { get; set; }
+        public string ModifiedBy { get; set; }
     }
-    public class JobEditModel : JobRegisterModel
-    { 
+    public class JobEditModel 
+    {
+        public string JobTitle { get; set; }
+        public DateTime ShootingDateUTC { get; set; }
+        public string ContactNumbers { get; set; }
+        public string ContactEmail { get; set; }
+        public DateTime CastingFromDateUtc { get; set; }
+        public DateTime CastingToDateUtc { get; set; }
+        public DateTime CastingExpiryDateUtc { get; set; }
+        public string Description { get; set; }
+        public string UserId { get; set; }
+        public Guid JobId { get; set; }
     }
     public class JobListModel
     {

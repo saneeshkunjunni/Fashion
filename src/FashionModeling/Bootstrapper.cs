@@ -8,6 +8,9 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Practices.Unity;
 using Unity.Mvc4;
+using System.Data.Entity;
+using System.Web;
+using Microsoft.Owin.Security;
 
 namespace FashionModeling
 {
@@ -30,12 +33,22 @@ namespace FashionModeling
             // it is NOT necessary to register your controllers
 
             // e.g. container.RegisterType<ITestService, TestService>();
-            
+
             container.RegisterType<IJobServices, JobServices>();
             container.RegisterType<IGalleryServices, GalleryServices>();
-            container.RegisterType<UserManager<ApplicationUser>>(new HierarchicalLifetimeManager());
-            container.RegisterType<IUserStore<ApplicationUser>, UserStore<ApplicationUser>>(new HierarchicalLifetimeManager());
-            container.RegisterType<AccountController>(new InjectionConstructor());
+
+
+            container.RegisterType<DbContext, ApplicationDbContext>(new HierarchicalLifetimeManager());
+            container.RegisterType<IUserStore<ApplicationUser>,
+                UserStore<ApplicationUser>>(new HierarchicalLifetimeManager());
+            container.RegisterType<ApplicationUserManager>(new HierarchicalLifetimeManager());
+            container.RegisterType<IAuthenticationManager>(
+                new InjectionFactory(c => HttpContext.Current.GetOwinContext().Authentication));
+            container.RegisterType<ApplicationSignInManager>(new HierarchicalLifetimeManager());
+
+            //container.RegisterType<UserManager<ApplicationUser>>(new HierarchicalLifetimeManager());
+            //container.RegisterType<IUserStore<ApplicationUser>, UserStore<ApplicationUser>>(new HierarchicalLifetimeManager());
+            //container.RegisterType<AccountController>(new InjectionConstructor());
             RegisterTypes(container);
 
             return container;

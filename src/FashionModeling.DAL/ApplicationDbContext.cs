@@ -31,7 +31,7 @@ namespace FashionModeling.DAL
         public DbSet<Subscription> Subscription { get; set; }
         public DbSet<Tags> Tags { get; set; }
 
-
+        
 
         public static ApplicationDbContext Create()
         {
