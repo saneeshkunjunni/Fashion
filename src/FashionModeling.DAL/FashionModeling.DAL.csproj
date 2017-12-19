@@ -65,7 +65,9 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -81,6 +83,9 @@
     <Compile Include="Entity\BaseEntity.cs" />
     <Compile Include="Entity\JobApplications.cs" />
     <Compile Include="Entity\JobRoles.cs" />
+    <Compile Include="Entity\MetaEntity.cs" />
+    <Compile Include="Entity\Notifications.cs" />
+    <Compile Include="Entity\Profile.cs" />
     <Compile Include="Entity\Subscription.cs" />
     <Compile Include="Entity\UserEntity.cs" />
     <Compile Include="Entity\Common.cs" />
@@ -97,6 +102,8 @@
     <Compile Include="Mappings\JobApplicationMapping.cs" />
     <Compile Include="Mappings\JobRolesMapping.cs" />
     <Compile Include="Mappings\JobsMapping.cs" />
+    <Compile Include="Mappings\NotificationMapping.cs" />
+    <Compile Include="Mappings\ProfileMapping.cs" />
     <Compile Include="Mappings\SubscriptionMapping.cs" />
     <Compile Include="Mappings\TagMapping.cs" />
     <Compile Include="Migrations\Configuration.cs" />

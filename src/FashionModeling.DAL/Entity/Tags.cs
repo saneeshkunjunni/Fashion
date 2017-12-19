@@ -17,5 +17,6 @@ namespace FashionModeling.DAL.Entity
         public bool IsActive { get; set; }
 
         public virtual ICollection<Gallery> Galleries { get; set; }
+        public virtual ICollection<Profile> Profiles { get; set; }
     }
 }

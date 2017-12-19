@@ -19,7 +19,7 @@ namespace FashionModeling.DAL.Mappings
             this.Property(x => x.AreaCode);
             this.Property(x => x.CreatedBy);
             this.Property(x => x.CreatedUTCDate);                        
-            this.Property(x => x.ModifiedBy);
+            this.Property(x => x.ModifiedBy).IsOptional();
             this.Property(x => x.ModifiedUTCDate); 
             this.Property(x => x.State);            
             this.Property(x => x.Status);

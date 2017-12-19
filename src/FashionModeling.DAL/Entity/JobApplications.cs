@@ -10,7 +10,7 @@ namespace FashionModeling.DAL.Entity
     {
         public Guid AppliedFor { get; set; }
         public string AboutApplicant { get; set; }
-
+        public bool IsSelected { get; set; }
         public virtual Jobs Job { get; set; }
     }
 }

@@ -14,6 +14,7 @@ namespace FashionModeling.Models
         public string Description { get; set; }
         [Required, Display(Name = "Upload", Prompt = "Upload")]
         public string Url { get; set; }
+        public bool IsImage{ get; set; }
         public bool IsActive { get; set; }
     }
     public class GalleryEditModel
@@ -23,6 +24,9 @@ namespace FashionModeling.Models
         public string Description { get; set; }
         [Required, Display(Name = "Upload", Prompt = "Upload")]
         public string Url { get; set; }
+        public bool IsImage { get; set; }
+        public bool IsFeatured { get; set; }
+        public bool IsSlider { get; set; }
         public bool IsActive { get; set; }
     }
     public class GalleryDetailsModel
@@ -32,6 +36,9 @@ namespace FashionModeling.Models
         public string Description { get; set; }
         [Required, Display(Name = "Upload", Prompt = "Upload")]
         public string Url { get; set; }
+        public bool IsImage { get; set; }
+        public bool IsFeatured { get; set; }
+        public bool IsSlider { get; set; }
         public DateTime CreatedDate { get; set; } 
         public DateTime ModifiedDate { get; set; }
         public bool IsActive { get; set; }

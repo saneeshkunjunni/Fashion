@@ -12,6 +12,8 @@ using FashionModeling.Models;
 using FashionModeling.DAL.Entity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using FashionModeling.DAL;
+using System.Configuration;
+using FashionModeling.Services.Interfaces;
 
 namespace FashionModeling.Controllers
 {
@@ -20,16 +22,17 @@ namespace FashionModeling.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-
+        private ITagServices _tagServices;
 
         public AccountController()
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ITagServices tagServices)
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            _tagServices = tagServices;
         }
 
         public ApplicationSignInManager SignInManager
@@ -159,18 +162,23 @@ namespace FashionModeling.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    var RoleManagers = new RoleManager<IdentityRole>(
-                   new RoleStore<IdentityRole>(new ApplicationDbContext()));
-                    if (!RoleManagers.RoleExists("Admin"))
+                    var admins = ConfigurationManager.AppSettings["admins"];
+                    if (admins.Split(',').Contains(model.Email.ToLower()))
                     {
-                        var roleresults = RoleManagers.Create(new IdentityRole("Admin"));
+                        var RoleManagers = new RoleManager<IdentityRole>(
+                  new RoleStore<IdentityRole>(new ApplicationDbContext()));
+                        if (!RoleManagers.RoleExists("Admin"))
+                        {
+                            var roleresults = RoleManagers.Create(new IdentityRole("Admin"));
+                        }
+                        var role = await UserManager.IsInRoleAsync(user.Id, "Admin");
+                        if (!role)
+                        {
+                            //user don't have exhibitor role. add role
+                            var roleresult = UserManager.AddToRole(user.Id, "Admin");
+                        }
                     }
-                    var role = await UserManager.IsInRoleAsync(user.Id, "Admin");
-                    if (!role)
-                    {
-                        //user don't have exhibitor role. add role
-                        var roleresult = UserManager.AddToRole(user.Id, "Admin");
-                    }
+
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
@@ -183,6 +191,67 @@ namespace FashionModeling.Controllers
                 AddErrors(result);
             }
 
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+        [AllowAnonymous]
+        public ActionResult Createprofile()
+        {
+            ProfileViewModel model = new ProfileViewModel();
+            model.TagItems.AddRange(_tagServices.GetTags(x => x.IsActive == true).Select(x=> new SelectListItem()
+            {
+                Value = x.TagId.ToString(),
+               Text =x.TagName
+            }));
+            return View(model);
+        }
+
+        //
+        // POST: /Account/Register
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Createprofile(ProfileViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var result = await UserManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    var admins = ConfigurationManager.AppSettings["admins"];
+                    if (admins.Split(',').Contains(model.Email.ToLower()))
+                    {
+                        var RoleManagers = new RoleManager<IdentityRole>(
+                  new RoleStore<IdentityRole>(new ApplicationDbContext()));
+                        if (!RoleManagers.RoleExists("Admin"))
+                        {
+                            var roleresults = RoleManagers.Create(new IdentityRole("Admin"));
+                        }
+                        var role = await UserManager.IsInRoleAsync(user.Id, "Admin");
+                        if (!role)
+                        {
+                            //user don't have exhibitor role. add role
+                            var roleresult = UserManager.AddToRole(user.Id, "Admin");
+                        }
+                    }
+
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
+                    // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
+                    // Send an email with this link
+                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    return RedirectToAction("Index", "Home");
+                }
+                AddErrors(result);
+            }
+            model.TagItems.AddRange(_tagServices.GetTags(x => x.IsActive == true).Select(x => new SelectListItem()
+            {
+                Value = x.TagId.ToString(),
+                Text = x.TagName
+            }));
             // If we got this far, something failed, redisplay form
             return View(model);
         }

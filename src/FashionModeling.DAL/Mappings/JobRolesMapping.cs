@@ -21,7 +21,7 @@ namespace FashionModeling.DAL.Mappings
             this.Property(x => x.CreatedUTCDate).IsRequired();
             this.Property(x => x.Gender).IsRequired();
             this.Property(x => x.JobId).IsRequired();
-            this.Property(x => x.ModifiedBy).IsRequired();
+            this.Property(x => x.ModifiedBy).IsOptional();
             this.Property(x => x.ModifiedUTCDate).IsRequired();
             this.Property(x => x.Professions).IsRequired();
             this.Property(x => x.RoleName).IsRequired();

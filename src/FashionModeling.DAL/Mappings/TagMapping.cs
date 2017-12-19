@@ -18,7 +18,7 @@ namespace FashionModeling.DAL.Mappings
             this.Property(x => x.Id);
             this.Property(x => x.IsActive);
             this.Property(x => x.ModifiedUTCDate);
-            this.Property(x => x.ModifiedBy);
+            this.Property(x => x.ModifiedBy).IsOptional();
             this.Property(x => x.TagName);
             this.Property(x => x.TagType);
 

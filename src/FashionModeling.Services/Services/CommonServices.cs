@@ -20,12 +20,14 @@ namespace FashionModeling.Services.Services
                 var result = new Common()
                 {
                     Code = model.Code,
-                    CreatedBy = model.CreatedBy,
                     Description = model.Description,
+                    FreeText1=model.FreeText1,
+                    FreeText2=model.FreeText2,
+                    FreeText3=model.FreeText3,
+                    IsSelected=false,                    
                     IsActive = true,
                     IsDeleted = false,
                     Title = model.Title,
-                    ModifiedBy = model.CreatedBy,
                 };
                 unitOfwork.CommonRepo.Insert(result);
                 unitOfwork.Save();
@@ -49,7 +51,6 @@ namespace FashionModeling.Services.Services
                     result.Description = model.Description;
                     result.IsActive = model.IsActive;
                     result.IsDeleted = model.IsDeleted;
-                    result.ModifiedBy = model.ModifiedBy;
                     result.Title = model.Title;
                     unitOfwork.CommonRepo.Update(result);
                     return unitOfwork.Save() > 0;
@@ -92,7 +93,22 @@ namespace FashionModeling.Services.Services
 
         public CommonEditModel GetCommonEdit(object id)
         {
-            throw new NotImplementedException();
+            var result = unitOfwork.CommonRepo.Get(x => x.Id.Equals(id));
+            if (result.Count() > 0)
+            {
+                return result.Select(x =>
+                   new CommonEditModel()
+                   {
+                       Code = x.Code,
+                       CommonId = x.Id,
+                       Description = x.Description,
+                       IsActive = x.IsActive,
+                       Title = x.Title,
+                       IsDeleted=x.IsDeleted
+                   }).FirstOrDefault();
+            }
+
+            return null;
         }
     }
 }

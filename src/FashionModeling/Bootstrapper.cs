@@ -34,8 +34,6 @@ namespace FashionModeling
 
             // e.g. container.RegisterType<ITestService, TestService>();
 
-            container.RegisterType<IJobServices, JobServices>();
-            container.RegisterType<IGalleryServices, GalleryServices>();
 
 
             container.RegisterType<DbContext, ApplicationDbContext>(new HierarchicalLifetimeManager());
@@ -49,6 +47,13 @@ namespace FashionModeling
             //container.RegisterType<UserManager<ApplicationUser>>(new HierarchicalLifetimeManager());
             //container.RegisterType<IUserStore<ApplicationUser>, UserStore<ApplicationUser>>(new HierarchicalLifetimeManager());
             //container.RegisterType<AccountController>(new InjectionConstructor());
+
+
+
+            container.RegisterType<IJobServices, JobServices>();
+            container.RegisterType<IGalleryServices, GalleryServices>();
+            container.RegisterType<IAddressServices, AddressServices>();
+            container.RegisterType<ITagServices, TagServices>();
             RegisterTypes(container);
 
             return container;

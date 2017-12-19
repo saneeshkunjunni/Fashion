@@ -18,6 +18,7 @@ namespace FashionModeling.DAL.Entity
             // Add custom user claims here
             return userIdentity;
         }
+        public DateTime CreateDateUTC { get; set; } = DateTime.UtcNow;
         public virtual ICollection<Gallery> Galleries { get; set; }
         public virtual ICollection<Tags> Tags { get; set; }
         public virtual ICollection<Gallery> ModifiedGalleries { get; set; }
@@ -37,5 +38,6 @@ namespace FashionModeling.DAL.Entity
         public virtual ICollection<JobRoles> JobRoles { get; set; }
         public virtual ICollection<JobRoles> ModifiedJobRoles { get; set; }
 
+        public virtual Profile Profile { get; set; }
     }
 }

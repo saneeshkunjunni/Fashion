@@ -30,8 +30,8 @@ namespace FashionModeling.DAL
         public DbSet<Jobs> Jobs { get; set; }
         public DbSet<Subscription> Subscription { get; set; }
         public DbSet<Tags> Tags { get; set; }
+        public DbSet<Notifications> Notifications { get; set; }
 
-        
 
         public static ApplicationDbContext Create()
         {
@@ -44,22 +44,35 @@ namespace FashionModeling.DAL
             modelBuilder.Configurations.Add<CastLocations>(new CastLocationMapping());
             modelBuilder.Configurations.Add<Common>(new CommonMapping());
             modelBuilder.Configurations.Add<Gallery>(new GalleryMapping());
+            modelBuilder.Configurations.Add<Profile>(new ProfileMapping());
             modelBuilder.Configurations.Add<JobApplications>(new JobApplicationMapping());
             modelBuilder.Configurations.Add<JobRoles>(new JobRolesMapping());
             modelBuilder.Configurations.Add<Jobs>(new JobsMapping());
             modelBuilder.Configurations.Add<Subscription>(new SubscriptionMapping());
             modelBuilder.Configurations.Add<Tags>(new TagMapping());
 
-
+            modelBuilder.Entity<ApplicationUser>()
+               .HasOptional(s => s.Profile)
+               .WithRequired(ad => ad.ProfileUser);
             modelBuilder.Entity<Gallery>()
                .HasMany<Tags>(s => s.Tags)
                .WithMany(c => c.Galleries)
                .Map(cs =>
                {
-                   cs.MapRightKey("GalleryRefId");
-                   cs.MapLeftKey("TagRefId");
+                   cs.MapRightKey("GalleryId");
+                   cs.MapLeftKey("TagId");
                    cs.ToTable("GalleryTags");
                });
+            modelBuilder.Entity<Profile>()
+             .HasMany<Tags>(s => s.Tags)
+             .WithMany(c => c.Profiles)
+             .Map(cs =>
+             {
+                 cs.MapRightKey("ProfileId");
+                 cs.MapLeftKey("TagId");
+                 cs.ToTable("ProfileTags");
+             });
+
             base.OnModelCreating(modelBuilder);
         }
         public override int SaveChanges()

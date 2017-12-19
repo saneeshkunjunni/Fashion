@@ -1,0 +1,124 @@
+﻿@model FashionModeling.Models.AddressDetailsModel
+
+@{
+    /**/
+
+    ViewBag.Title = "Address Details";
+    ViewBag.Page = "Address";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            @ViewBag.Title
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="@Url.Action(ViewBag.Page,"Admin")"><i class="fa fa-dashboard"></i> @ViewBag.Page</a></li>
+            <li class="active">@ViewBag.Title </li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">@ViewBag.Title</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-12" id="listdetails">
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayNameFor(model => model.AddressLine1)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.AddressLine1)
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayNameFor(model => model.AddressLine2)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.AddressLine2)
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayNameFor(model => model.AddressMap)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.AddressMap)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayNameFor(model => model.AreaCode)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.AreaCode)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayNameFor(model => model.State)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.State)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayNameFor(model => model.Suburb)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.Suburb)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayNameFor(model => model.Status)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.Status)
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- ./box-body -->
+                    <div class="box-footer">
+                        <div class="row">
+                            <div class="col-sm-3 col-xs-6">
+                                @using (Html.BeginForm("DeleteAddress","Admin",FormMethod.Post))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    @Html.Hidden("id", Model.AddressId)
+                                    <button type="submit" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete this Address</button>
+                                }       <!-- /.description-block -->
+                            </div>
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- /.box-footer -->
+                </div>
+                <!-- /.box -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

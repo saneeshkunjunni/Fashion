@@ -60,11 +60,15 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link"><i class="nc-icon nc-camera-compact"></i> Profiles</a>
+                        <a href="@Url.Action("Profiles", "Home")" class="nav-link"><i class="nc-icon nc-camera-compact"></i> Profiles</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link"><i class="nc-icon nc-book-bookmark"></i> Jobs</a>
+                        <a href="@Url.Action("Jobs", "Home")" class="nav-link"><i class="nc-icon nc-book-bookmark"></i> Jobs</a>
                     </li>
+                    @*<li class="nav-item">
+            <a href="@Url.Action("Login","Account")" class="nav-link"><i class="nc-icon nc-lock-circle-open"></i> Login</a>
+        </li>*@
+                    @{Html.RenderPartial("~/Views/Shared/_LoginPartial.cshtml"); }
                 </ul>
             </div>
         </div>
@@ -95,10 +99,7 @@
     @Scripts.Render("~/bundles/jquery")
     <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
     <script src="~/Scripts/tether.min.js"></script>
-    @*<script src="~/Scripts/bootstrap.min.js"></script>*@
-
-    <script src="~/Scripts/popper.js"></script>
-        @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
     <script src="~/Scripts/bootstrap-switch.min.js"></script>
     <script src="~/Scripts/nouislider.js"></script>
     <script src="~/Scripts/moment.min.js"></script>

@@ -13,6 +13,7 @@ namespace FashionModeling
         public ApplicationDbContext context = new ApplicationDbContext();
 
 
+        #region Galleries
         private Repository<Gallery> _galleries;
         public Repository<Gallery> GalleriesRepo
         {
@@ -26,6 +27,9 @@ namespace FashionModeling
                 return _galleries;
             }
         }
+        #endregion
+
+        #region Job
         private Repository<Jobs> _jobs;
         public Repository<Jobs> JobsRepo
         {
@@ -39,6 +43,9 @@ namespace FashionModeling
                 return _jobs;
             }
         }
+        #endregion
+
+        #region Address
         private Repository<Address> _address;
         public Repository<Address> AddressRepo
         {
@@ -52,6 +59,9 @@ namespace FashionModeling
                 return _address;
             }
         }
+        #endregion
+
+        #region Common
         private Repository<Common> _common;
         public Repository<Common> CommonRepo
         {
@@ -65,7 +75,41 @@ namespace FashionModeling
                 return _common;
             }
         }
-        
+
+        #endregion
+
+        #region Notifications
+        private Repository<Notifications> _notifications;
+        public Repository<Notifications> NotificationRepo
+        {
+            get
+            {
+
+                if (this._notifications == null)
+                {
+                    this._notifications = new Repository<Notifications>(context);
+                }
+                return _notifications;
+            }
+        }
+
+        #endregion
+        #region Tags
+        private Repository<Tags> _tags;
+        public Repository<Tags> TagRepo
+        {
+            get
+            {
+
+                if (this._tags == null)
+                {
+                    this._tags = new Repository<Tags>(context);
+                }
+                return _tags;
+            }
+        }
+
+        #endregion
         public int Save()
         {
            return context.SaveChanges();

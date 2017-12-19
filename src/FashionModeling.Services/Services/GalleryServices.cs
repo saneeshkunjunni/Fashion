@@ -20,7 +20,8 @@ namespace FashionModeling.Services.Services
                 {
                     Description = model.Description,
                     IsActive = true,
-                    Url = model.Url,                    
+                    IsImage = model.IsImage,
+                    Url = model.Url,
                 };
                 unitOfwork.GalleriesRepo.Insert(result);
                 unitOfwork.Save();
@@ -36,11 +37,15 @@ namespace FashionModeling.Services.Services
         {
             try
             {
-                var result = unitOfwork.GalleriesRepo.Get(filter: x => x.Id ==(Guid)model.Id).FirstOrDefault();
+                var result = unitOfwork.GalleriesRepo.Get(filter: x => x.Id == (Guid)model.Id).FirstOrDefault();
                 result.Url = model.Url;
+                result.IsImage = model.IsImage;
+                result.IsFeatured = model.IsFeatured;
+                result.IsActive = model.IsActive;
+                result.IsSlider = model.IsSlider;
                 result.Description = model.Description;
                 unitOfwork.GalleriesRepo.Update(result);
-                return unitOfwork.Save() > 0;                                
+                return unitOfwork.Save() > 0;
             }
             catch (Exception)
             {
@@ -48,7 +53,7 @@ namespace FashionModeling.Services.Services
             }
         }
 
-        public GalleryListModel GetGallery(int page,int pageSize)
+        public GalleryListModel GetGallery(int page, int pageSize)
         {
             try
             {
@@ -60,10 +65,13 @@ namespace FashionModeling.Services.Services
                         Id = x.Id,
                         IsActive = x.IsActive,
                         ModifiedDate = x.ModifiedUTCDate,
-                        Url = x.Url
-                    }).OrderByDescending(x=>x.CreatedDate).ToPagedList<GalleryDetailsModel>(page,pageSize);
+                        Url = x.Url,
+                        IsFeatured = x.IsFeatured,
+                        IsImage = x.IsImage,
+                        IsSlider = x.IsSlider,
+                    }).OrderByDescending(x => x.CreatedDate).ToPagedList<GalleryDetailsModel>(page, pageSize);
 
-                return new GalleryListModel() { GalleriesList=result };
+                return new GalleryListModel() { GalleriesList = result };
             }
             catch (Exception)
             {
@@ -76,14 +84,17 @@ namespace FashionModeling.Services.Services
             try
             {
                 var result = unitOfwork.GalleriesRepo.Get(filter: x => x.Id == (Guid)id)
-                    .Select(x=>new GalleryDetailsModel()
+                    .Select(x => new GalleryDetailsModel()
                     {
-                        CreatedDate=x.CreatedUTCDate,
-                     Description =x.Description   ,
-                     Id=x.Id,
-                     IsActive=x.IsActive,
-                     ModifiedDate = x.ModifiedUTCDate,
-                     Url =x.Url
+                        CreatedDate = x.CreatedUTCDate,
+                        Description = x.Description,
+                        Id = x.Id,
+                        IsActive = x.IsActive,
+                        ModifiedDate = x.ModifiedUTCDate,
+                        Url = x.Url,
+                        IsFeatured = x.IsFeatured,
+                        IsImage = x.IsImage,
+                        IsSlider = x.IsSlider,
                     }).FirstOrDefault();
 
                 return result;
@@ -100,10 +111,14 @@ namespace FashionModeling.Services.Services
             {
                 var result = unitOfwork.GalleriesRepo.Get(filter: x => x.Id == (Guid)id)
                     .Select(x => new GalleryEditModel()
-                    {                         Description = x.Description,
+                    {
+                        Description = x.Description,
                         Id = x.Id,
                         IsActive = x.IsActive,
-                        Url = x.Url
+                        Url = x.Url,
+                        IsFeatured = x.IsFeatured,
+                        IsImage = x.IsImage,
+                        IsSlider = x.IsSlider,
                     }).FirstOrDefault();
 
                 return result;

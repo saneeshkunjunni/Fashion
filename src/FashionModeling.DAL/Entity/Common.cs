@@ -11,6 +11,12 @@ namespace FashionModeling.DAL.Entity
         public string Title { get; set; }
         public string Description { get; set; }
         public string Code { get; set; }
+
+        public string FreeText1 { get; set; }
+        public string FreeText2 { get; set; }
+        public string FreeText3 { get; set; }
+        public bool IsSelected { get; set; }
+
         public bool IsActive { get; set; }
         public bool IsDeleted { get; set; }
     }

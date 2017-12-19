@@ -1,6 +1,6 @@
-﻿
+﻿@model FashionModeling.Models.TagListModel
 @{
-    ViewBag.Title = "Tags";   
+    ViewBag.Title = "Tags";
     ViewBag.Page = "Tags";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
@@ -13,7 +13,7 @@
             @ViewBag.Title
         </h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a> </li>
             <li class="active">@ViewBag.Title </li>
         </ol>
     </section>
@@ -22,6 +22,58 @@
     <section class="content">
         <!-- Info boxes -->
         <div class="row">
+            <div class="col-md-12">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">@ViewBag.Title</h3>
+                        <div class="box-tools pull-right">
+                            <a href="@Url.Action("AddTags","Admin")" class="btn btn-default"><i class="fa fa-plus"></i> Add New</a>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-12" id="listdetails">
+                                @Html.Partial("~/Views/Admin/_taglists.cshtml", Model.TagLists)
+                            </div>
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- ./box-body -->
+                    <div class="box-footer">
+                        <div class="row">
+                            <div class="col-sm-3 col-xs-6">
+                                <ul class="pagination pagination-sm inline">
+                                    @if (@Model.TagLists.HasPreviousPage)
+                                    {
+                                        <li><a href="@Url.Action("Tags","Admin",routeValues:new {page =Model.TagLists.FirstPage,pageSize = Model.TagLists.PageSize })">«</a></li>
+                                        <li><a href="@Url.Action("Tags","Admin",routeValues:new {page =Model.TagLists.PageIndex-1,pageSize = Model.TagLists.PageSize })">@(Model.TagLists.PageIndex - 1)</a></li>
+                                    }
+                                    @if (@Model.TagLists.Count > 0)
+                                    {
+                                        <li><a href="#">@Model.TagLists.PageIndex</a></li>
+                                    }
+                                    @if (@Model.TagLists.HasNextPage)
+                                    {
+                                        <li><a href="@Url.Action("Tags","Admin",routeValues:new {page =Model.TagLists.PageIndex+1,pageSize = Model.TagLists.PageSize })">@(Model.TagLists.PageIndex + 1)</a></li>
+                                        <li><a href="@Url.Action("Tags",routeValues:new {page =Model.TagLists.LastPage,pageSize = Model.TagLists.PageSize })">»</a></li>
+
+                                    }
+                                </ul>
+                            </div>
+                            <div class="col-sm-3 col-xs-6">
+                            </div>
+                            <div class="col-sm-3 col-xs-6">
+                            </div>
+                            <div class="col-sm-3 col-xs-6">
+                            </div>
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- /.box-footer -->
+                </div>
+                <!-- /.box -->
+            </div>
         </div>
     </section>
 </div>

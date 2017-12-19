@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FashionModeling.DAL.Entity
 {
-    public class Jobs:UserEntity
+    public class Jobs: MetaEntity
     {
         public string JobTitle { get; set; }       
         public Guid ShootingAddressId { get; set; }

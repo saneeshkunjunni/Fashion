@@ -1,0 +1,63 @@
+﻿@model PagedList<FashionModeling.Models.AddressDetailsModel>
+<table class="table">
+    <tr>
+          <th>
+               Sl No.
+            </th> 
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().AddressLine1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().AddressLine2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().AddressMap)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().AreaCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().State)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Suburb)
+        </th> 
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Status)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.Select((value, index) => new { value, index })) {
+    <tr>
+        <td>
+            @(item.index + (Model.PageSize * (Model.PageIndex - 1)) + 1)
+        </td>
+        <td>
+            <a href="@Url.Action("AddressDetails","Admin",routeValues: new { id= item.value.AddressId})"> @Html.DisplayFor(modelItem => item.value.AddressLine1)</a>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.value.AddressLine2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.value.AddressMap)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.value.AreaCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.value.State)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.value.Suburb)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.value.Status)
+        </td>
+        <td>
+            <a href="@Url.Action("EditAddress","Admin",routeValues: new {  id=item.value.AddressId })"><i class="fa fa-edit"></i></a>
+        </td>
+    </tr>
+}
+
+</table>

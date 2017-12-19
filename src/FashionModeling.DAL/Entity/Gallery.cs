@@ -14,9 +14,13 @@ namespace FashionModeling.DAL.Entity
         }
         public string Description { get; set; }
         public string Url { get; set; }
+        public bool IsImage { get; set; }
         public bool IsActive { get; set; }
         public bool IsSlider { get; set; }
         public bool IsFeatured { get; set; }
+        public Guid ProfileId { get; set; }
+
+        public virtual Profile Profile { get; set; }
 
         public virtual ICollection<Tags> Tags { get; set; }
     }

@@ -41,11 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddressModel.cs" />
     <Compile Include="CastLocationModel.cs" />
     <Compile Include="CommonModel.cs" />
     <Compile Include="Dropdown.cs" />
     <Compile Include="GalleryModel.cs" />
     <Compile Include="JobModel.cs" />
+    <Compile Include="NotificationModel.cs" />
+    <Compile Include="ProfileModel.cs" />
+    <Compile Include="ProflieViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TagsModel.cs" />
   </ItemGroup>

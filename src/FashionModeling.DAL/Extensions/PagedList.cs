@@ -30,7 +30,7 @@ namespace FashionModeling
         }
         public int LastPage
         {
-            get { return (int)Math.Floor((decimal)RowCount / PageSize); }
+            get { return (int)Math.Ceiling((decimal)RowCount / PageSize); }
         }
 
         public PagedList(List<T> items, int count, int pageIndex, int pageSize)
