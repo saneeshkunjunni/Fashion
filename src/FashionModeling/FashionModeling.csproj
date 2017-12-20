@@ -1935,6 +1935,11 @@
     <Content Include="Views\Admin\EditTags.cshtml" />
     <Content Include="Views\Admin\TagDetails.cshtml" />
     <Content Include="Views\Account\Createprofile.cshtml" />
+    <Content Include="Views\Admin\Common.cshtml" />
+    <Content Include="Views\Admin\_commonlist.cshtml" />
+    <Content Include="Views\Admin\AddCommon.cshtml" />
+    <Content Include="Views\Admin\EditCommon.cshtml" />
+    <Content Include="Views\Admin\CommonDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

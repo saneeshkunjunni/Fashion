@@ -21,10 +21,10 @@ namespace FashionModeling.Services.Services
                 {
                     Code = model.Code,
                     Description = model.Description,
-                    FreeText1=model.FreeText1,
-                    FreeText2=model.FreeText2,
-                    FreeText3=model.FreeText3,
-                    IsSelected=false,                    
+                    FreeText1 = model.FreeText1,
+                    FreeText2 = model.FreeText2,
+                    FreeText3 = model.FreeText3,
+                    IsSelected = false,
                     IsActive = true,
                     IsDeleted = false,
                     Title = model.Title,
@@ -39,11 +39,23 @@ namespace FashionModeling.Services.Services
             }
         }
 
+        public bool DeleteCommon(Guid id)
+        {
+            try
+            {
+                unitOfwork.CommonRepo.Delete(id);
+                return unitOfwork.Save() > 0;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         public bool EditCommon(CommonEditModel model)
         {
             try
             {
-
                 var result = unitOfwork.CommonRepo.Get(x => x.Id.Equals(model.CommonId)).FirstOrDefault();
                 if (result != null)
                 {
@@ -63,12 +75,32 @@ namespace FashionModeling.Services.Services
             }
         }
 
-        public CommonListModel GetCommon(int page, int pageSize, string filter)
+        public CommonListModel GetCommon(string type, int page, int pageSize, string filter)
         {
-            throw new NotImplementedException();
+            var result = unitOfwork.CommonRepo.Get(x => x.Code.Equals(type, StringComparison.CurrentCultureIgnoreCase));
+            if (result.Count() > 0)
+            {
+                var data = new CommonListModel();
+                data.CommonList = result.Select(x =>
+                new CommonDetailsModel()
+                {
+                    Code = x.Code,
+                    CommonId = x.Id,
+                    CreatedBy = x.CreatedBy,
+                    CreatedUTCDate = x.CreatedUTCDate,
+                    Description = x.Description,
+                    IsActive = x.IsActive,
+                    ModifiedBy = x.ModifiedBy,
+                    ModifiedUTCDate = x.ModifiedUTCDate,
+                    Title = x.Title
+                }).OrderBy(x=>x.Title).ToPagedList(page, pageSize);
+                return data;
+            }
+
+            return null;
         }
 
-        public CommonDetailsModel GetCommonDetails(object id)
+        public CommonDetailsModel GetCommonDetails(Guid id)
         {
             var result = unitOfwork.CommonRepo.Get(x => x.Id.Equals(id));
             if (result.Count() > 0)
@@ -85,13 +117,13 @@ namespace FashionModeling.Services.Services
                        ModifiedBy = x.ModifiedBy,
                        ModifiedUTCDate = x.ModifiedUTCDate,
                        Title = x.Title
-                   }).FirstOrDefault(); 
+                   }).FirstOrDefault();
             }
 
             return null;
         }
 
-        public CommonEditModel GetCommonEdit(object id)
+        public CommonEditModel GetCommonEdit(Guid id)
         {
             var result = unitOfwork.CommonRepo.Get(x => x.Id.Equals(id));
             if (result.Count() > 0)
@@ -104,10 +136,9 @@ namespace FashionModeling.Services.Services
                        Description = x.Description,
                        IsActive = x.IsActive,
                        Title = x.Title,
-                       IsDeleted=x.IsDeleted
+                       IsDeleted = x.IsDeleted
                    }).FirstOrDefault();
             }
-
             return null;
         }
     }

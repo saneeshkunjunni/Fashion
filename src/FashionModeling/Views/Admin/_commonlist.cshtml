@@ -1,0 +1,86 @@
+﻿@model PagedList<FashionModeling.Models.CommonDetailsModel>
+
+<table class="table">
+    <tr>
+        <th>
+            SL No.
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().FreeText1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().FreeText2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().FreeText3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().IsSelected)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().IsActive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().CreatedUTCDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().ModifiedUTCDate)
+        </th>
+        <th></th>
+    </tr>
+
+
+    @foreach (var item in Model.Select((value, index) => new { value, index }))
+    {
+    <tr>
+        <td>
+            @(item.index + (Model.PageSize * (Model.PageIndex - 1)) + 1)
+        </td>
+        <td>
+            <a href="@Url.Action("CommonDetails","Admin",routeValues: new { id= item.value.CommonId})">
+                @Html.DisplayFor(modelItem => item.value.Title)
+            </a>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.value.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.value.Code)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.value.FreeText1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.value.FreeText2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.value.FreeText3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.value.IsSelected)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.value.IsActive)
+        </td>
+        <td>
+            <p data-utc="@item.value.CreatedUTCDate.ToString("dd-MM-yyyy HH:mm")"></p>
+        </td>
+        <td>
+            <p data-utc="@item.value.ModifiedUTCDate.ToString("dd-MM-yyyy HH:mm")"></p>
+        </td>
+        <td>
+            <a href="@Url.Action("EditCommon","Admin",routeValues: new {  id=item.value.CommonId })"><i class="fa fa-edit"></i></a>
+        </td>
+    </tr>
+    }
+
+</table>

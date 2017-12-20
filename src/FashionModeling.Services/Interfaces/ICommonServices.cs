@@ -10,10 +10,11 @@ namespace FashionModeling.Services.Interfaces
     public interface ICommonServices
     {
         Guid AddCommon(CommonRegisterModel model);
-        CommonDetailsModel GetCommonDetails(object id);
-        CommonEditModel GetCommonEdit(object id);
-        bool EditCommon(CommonEditModel model); 
-        CommonListModel GetCommon(int page, int pageSize,string filter);
+        CommonDetailsModel GetCommonDetails(Guid id);
+        CommonEditModel GetCommonEdit(Guid id);
+        bool EditCommon(CommonEditModel model);
+        bool DeleteCommon(Guid id);        
+        CommonListModel GetCommon(string type,int page, int pageSize,string filter);
 
     }
 }

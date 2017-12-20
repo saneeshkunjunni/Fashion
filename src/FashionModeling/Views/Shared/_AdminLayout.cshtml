@@ -350,25 +350,73 @@
                     <li class="header">Settings</li>
                     <li class="Address">
                         <a href="@Url.Action("Address","Admin")">
-                            <i class="fa fa-circle-o text-red"></i>
+                            <i class="fa fa-circle-o text-aqua"></i>
                             <span>Address</span>
                         </a>
                     </li>
                     <li class="JobRoles">
                         <a href="@Url.Action("JobRoles","Admin")">
-                            <i class="fa fa-circle-o text-red"></i>
+                            <i class="fa fa-circle-o text-black"></i>
                             <span>Job Roles</span>
                         </a>
                     </li>
                     <li class="Tags">
                         <a href="@Url.Action("Tags","Admin")">
-                            <i class="fa fa-circle-o text-yellow"></i>
+                            <i class="fa fa-circle-o text-blue"></i>
                             <span>Tags </span>
                         </a>
                     </li>
-                    <li>
+                    <li class="CATEGORY">
+                        <a href="@Url.Action("Common","Admin",routeValues: new { type="CATEGORY" })">
+                            <i class="fa fa-circle-o text-fuchsia"></i>
+                            <span> Category</span>
+                        </a>
+                    </li>
+                    <li class="FITSIZE">
+                        <a href="@Url.Action("Common","Admin",routeValues: new { type="FITSIZE" })">
+                            <i class="fa fa-circle-o text-gray"></i>
+                            <span> Fit Size </span>
+                        </a>
+                    </li>
+                    <li class="EXPERIENCE">
+                        <a href="@Url.Action("Common","Admin",routeValues: new { type="EXPERIENCE" })">
+                            <i class="fa fa-circle-o text-green"></i>
+                            <span> Experience </span>
+                        </a>
+                    </li>
+                    <li class="SPECIALFEATURES">
+                        <a href="@Url.Action("Common","Admin",routeValues: new { type="SPECIALFEATURES" })">
+                            <i class="fa fa-circle-o text-light-blue"></i>
+                            <span> Special Features </span>
+                        </a>
+                    </li>
+                    <li class="ETHNICITY">
+                        <a href="@Url.Action("Common","Admin",routeValues: new { type="ETHNICITY" })">
+                            <i class="fa fa-circle-o text-lime"></i>
+                            <span> Ethnicity</span>
+                        </a>
+                    </li>
+                    <li class="HAIRCOLOR">
+                        <a href="@Url.Action("Common","Admin",routeValues: new { type="HAIRCOLOR" })">
+                            <i class="fa fa-circle-o text-navy"></i>
+                            <span> Hair Color</span>
+                        </a>
+                    </li>
+                    <li class="EYECOLOR">
+                        <a href="@Url.Action("Common","Admin",routeValues: new { type="EYECOLOR" })">
+                            <i class="fa fa-circle-o text-olive"></i>
+                            <span> Eye Color</span>
+                        </a>
+                    </li>
+                    <li class="EYECOLOR">
+                        <a href="@Url.Action("Common","Admin",routeValues: new { type="EYECOLOR" })">
+                            <i class="fa fa-circle-o text-orange"></i>
+                            <span> Eye Color</span>
+                        </a>
+                    </li>
+                    <li class="Users">
                         <a href="@Url.Action("Users","Admin")">
-                            <i class="fa fa-circle-o text-aqua"></i> <span>Information</span>
+                            <i class="fa fa-circle-o text-red"></i><span>Users</span>
                         </a>
                     </li>
                 </ul>

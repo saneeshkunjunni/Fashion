@@ -49,6 +49,7 @@ namespace FashionModeling.DAL
             modelBuilder.Configurations.Add<JobRoles>(new JobRolesMapping());
             modelBuilder.Configurations.Add<Jobs>(new JobsMapping());
             modelBuilder.Configurations.Add<Subscription>(new SubscriptionMapping());
+            modelBuilder.Configurations.Add<Notifications>(new NotificationMapping());
             modelBuilder.Configurations.Add<Tags>(new TagMapping());
 
             modelBuilder.Entity<ApplicationUser>()
@@ -84,19 +85,19 @@ namespace FashionModeling.DAL
                 where
                     e.IsRelationship == false &&
                     e.Entity != null &&
-                    typeof(UserEntity).IsAssignableFrom(e.Entity.GetType())
+                    typeof(BaseEntity).IsAssignableFrom(e.Entity.GetType())
                 select e;
 
             var currentTime = DateTime.UtcNow;
 
             foreach (var entry in objectStateEntries)
             {
-                var entityBase = entry.Entity as UserEntity;
+                var entityBase = entry.Entity as BaseEntity;
                 if (entry.State == EntityState.Added)
                 {
                     entityBase.CreatedUTCDate = currentTime;
                 }
-                entityBase.ModifiedUTCDate = currentTime;
+                entityBase.ModifiedUTCDate = currentTime;               
             }
 
             return base.SaveChanges();
