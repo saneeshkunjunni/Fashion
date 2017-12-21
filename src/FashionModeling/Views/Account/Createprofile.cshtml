@@ -19,6 +19,13 @@
     <link href="~/Content/bootstrap3.3.min.css" rel="stylesheet" />
     <link href="~/Content/paper-bootstrap-wizard.css" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
+    <!-- Fonts and Icons -->
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' />
+    <link href="~/Content/themify-icons.css" rel="stylesheet" />
+    <link href="~/Content/chosen.min.css" rel="stylesheet" />
+    <link href="~/Content/custom-chosen-bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-datetimepicker.css" rel="stylesheet" />
     <style>
         .logo-container {
             left: 50px;
@@ -44,17 +51,18 @@
                 margin-top: 10px;
                 width: 60px
             }
+
         .required {
-            padding-left:3px;
+            padding-left: 3px;
             color: #f00;
-        } 
+        }
+
+        .chosen-container {
+            background-color: #e8e7e3;
+        }
+         
     </style>
-    <!-- Fonts and Icons -->
-    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.css" rel="stylesheet">
-    <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' />
-    <link href="~/Content/themify-icons.css" rel="stylesheet" />
-    <link href="~/Content/chosen.min.css" rel="stylesheet" />
-    <link href="~/Content/custom-chosen-bootstrap.css" rel="stylesheet" />
+
 </head>
 <body>
     <div class="image-container set-full-height" style="background-image: url('/Images/paper-2.jpeg')">
@@ -428,9 +436,8 @@
         </div>
     </div>
     <!--   Core JS Files   -->
-    <script src="@Url.Content("~/Scripts/custom/jquery-2.2.4.min.js")"></script>
-    @*@Scripts.Render("~/bundles/jquery")*@
-    <script src="@Url.Content("~/Scripts/custom/bootstrap.min.js")"></script>
+    @Scripts.Render("~/bundles/jquery")
+    <script src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
     @*<script src="~/Scripts/bootstrap.bundle.min.js" type="text/javascript"></script>*@
     <script src="@Url.Content("~/Scripts/jquery.bootstrap.wizard.js")" type="text/javascript"></script>
     <script src="~/Scripts/moment.min.js"></script>
@@ -440,7 +447,7 @@
     <script src="@Url.Content("~/Scripts/paper-bootstrap-wizard.js")" type="text/javascript"></script>
 
     <script src="@Url.Content("~/Scripts/chosen.jquery.min.js")"></script>
-
+    <script src="~/Scripts/bootstrap-datetimepicker.js"></script>
     <!--More information about jquery.validate here: http://jqueryvalidation.org/	 -->
 
     @Scripts.Render("~/bundles/jqueryval")
@@ -465,7 +472,7 @@
             $('#HairColor').chosen();
             $('#EyeColor').chosen();
             $('#Dob').datetimepicker({
-                    format: 'DD/MM/YYYY'
+                format: 'DD/MM/YYYY',
                 });
             $(".chosen-container").css("width", "100%");
         });
