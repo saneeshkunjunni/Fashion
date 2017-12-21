@@ -1350,6 +1350,791 @@ namespace FashionModeling.DAL
                             CreatedBy =user.Id,
                             Title ="Armenian",
                         },
+                        new Common{
+                            Code = "NATIONALITY" ,
+                            Description ="Nationality for registration",
+                            IsActive = true,
+                            ModifiedBy =user.Id,
+                            CreatedBy =user.Id,
+                            Title ="Afghanistan",
+                        },
+                        new Common{
+                            Code = "NATIONALITY" ,
+                            Description ="Nationality for registration",
+                            IsActive = true,
+                            ModifiedBy =user.Id,
+                            CreatedBy =user.Id,
+                            Title ="Albania",
+                        },
+                        new Common{
+                            Code = "NATIONALITY" ,
+                            Description ="Nationality for registration",
+                            IsActive = true,
+                            ModifiedBy =user.Id,
+                            CreatedBy =user.Id,
+                            Title ="Algeria",
+                        },
+                    new Common{
+                        Code = "NATIONALITY" ,
+                        Description ="Nationality for registration",
+                        IsActive = true,
+                        ModifiedBy =user.Id,
+                        CreatedBy =user.Id,
+                        Title ="American Samoa",
+                    },
+                    new Common{
+                        Code = "NATIONALITY" ,
+                        Description ="Nationality for registration",
+                        IsActive = true,
+                        ModifiedBy =user.Id,
+                        CreatedBy =user.Id,
+                        Title ="Andorra",
+                    },
+                    new Common{
+                        Code = "NATIONALITY" ,
+                        Description ="Nationality for registration",
+                        IsActive = true,
+                        ModifiedBy =user.Id,
+                        CreatedBy =user.Id,
+                        Title ="Angola",
+                    },
+                    new Common{
+                        Code = "NATIONALITY" ,
+                        Description ="Nationality for registration",
+                        IsActive = true,
+                        ModifiedBy =user.Id,
+                        CreatedBy =user.Id,
+                        Title ="Anguilla",
+                    },
+                    new Common{
+                        Code = "NATIONALITY" ,
+                        Description ="Nationality for registration",
+                        IsActive = true,
+                        ModifiedBy =user.Id,
+                        CreatedBy =user.Id,
+                        Title ="Antarctica",
+                    },
+                    new Common{
+                        Code = "NATIONALITY" ,
+                        Description ="Nationality for registration",
+                        IsActive = true,
+                        ModifiedBy =user.Id,
+                        CreatedBy =user.Id,
+                        Title ="Antigua And Barbuda",
+                    },
+                    new Common{
+                        Code = "NATIONALITY" ,
+                        Description ="Nationality for registration",
+                        IsActive = true,
+                        ModifiedBy =user.Id,
+                        CreatedBy =user.Id,
+                        Title ="Argentina",
+                    },
+                    new Common{
+                        Code = "NATIONALITY" ,
+                        Description ="Nationality for registration",
+                        IsActive = true,
+                        ModifiedBy =user.Id,
+                        CreatedBy =user.Id,
+                        Title ="Armenia",
+                    },
+                    new Common{
+                        Code = "NATIONALITY" ,
+                        Description ="Nationality for registration",
+                        IsActive = true,
+                        ModifiedBy =user.Id,
+                        CreatedBy =user.Id,
+                        Title ="Aruba",
+                    },
+                    new Common{
+                        Code = "NATIONALITY" ,
+                        Description ="Nationality for registration",
+                        IsActive = true,
+                        ModifiedBy =user.Id,
+                        CreatedBy =user.Id,
+                        Title ="Australia",
+                    },
+                    new Common{
+                        Code = "NATIONALITY" ,
+                        Description ="Nationality for registration",
+                        IsActive = true,
+                        ModifiedBy =user.Id,
+                        CreatedBy =user.Id,
+                        Title ="Austria",
+                    },
+                    new Common{
+                        Code = "NATIONALITY" ,
+                        Description ="Nationality for registration",
+                        IsActive = true,
+                        ModifiedBy =user.Id,
+                        CreatedBy =user.Id,
+                        Title ="Azerbaijan",
+                    },
+                    new Common{
+                        Code = "NATIONALITY" ,
+                        Description ="Nationality for registration",
+                        IsActive = true,
+                        ModifiedBy =user.Id,
+                        CreatedBy =user.Id,
+                        Title ="Bahamas The",
+                    },
+                    new Common{
+                        Code = "NATIONALITY" ,
+                        Description ="Nationality for registration",
+                        IsActive = true,
+                        ModifiedBy =user.Id,
+                        CreatedBy =user.Id,
+                        Title ="Bahrain",
+                    },
+                    new Common{
+                        Code = "NATIONALITY" ,
+                        Description ="Nationality for registration",
+                        IsActive = true,
+                        ModifiedBy =user.Id,
+                        CreatedBy =user.Id,
+                        Title ="Bangladesh",
+                    },
+                    new Common{
+                        Code = "NATIONALITY" ,
+                        Description ="Nationality for registration",
+                        IsActive = true,
+                        ModifiedBy =user.Id,
+                        CreatedBy =user.Id,
+                        Title ="Barbados",
+                    },
+                    new Common{
+                        Code = "NATIONALITY" ,
+                        Description ="Nationality for registration",
+                        IsActive = true,
+                        ModifiedBy =user.Id,
+                        CreatedBy =user.Id,
+                        Title ="Belarus",
+                    },
+                    new Common{
+                        Code = "NATIONALITY" ,
+                        Description ="Nationality for registration",
+                        IsActive = true,
+                        ModifiedBy =user.Id,
+                        CreatedBy =user.Id,
+                        Title ="Belgium",
+                    },
+                    new Common{
+                        Code = "NATIONALITY" ,
+                        Description ="Nationality for registration",
+                        IsActive = true,
+                        ModifiedBy =user.Id,
+                        CreatedBy =user.Id,
+                        Title ="Belize",
+                    },
+                    new Common{
+                        Code = "NATIONALITY" ,
+                        Description ="Nationality for registration",
+                        IsActive = true,
+                        ModifiedBy =user.Id,
+                        CreatedBy =user.Id,
+                        Title ="Benin",
+                    },
+                    new Common{
+                        Code = "NATIONALITY" ,
+                        Description ="Nationality for registration",
+                        IsActive = true,
+                        ModifiedBy =user.Id,
+                        CreatedBy =user.Id,
+                        Title ="Bermuda",
+                    },
+                    new Common{
+                        Code = "NATIONALITY" ,
+                        Description ="Nationality for registration",
+                        IsActive = true,
+                        ModifiedBy =user.Id,
+                        CreatedBy =user.Id,
+                        Title ="Bhutan",
+                    },
+                    new Common{
+                        Code = "NATIONALITY" ,
+                        Description ="Nationality for registration",
+                        IsActive = true,
+                        ModifiedBy =user.Id,
+                        CreatedBy =user.Id,
+                        Title ="Bolivia",
+                    },
+                    new Common{
+                        Code = "NATIONALITY" ,
+                        Description ="Nationality for registration",
+                        IsActive = true,
+                        ModifiedBy =user.Id,
+                        CreatedBy =user.Id,
+                        Title ="Bosnia and Herzegovina",
+                    },
+                    new Common{
+                        Code = "NATIONALITY" ,
+                        Description ="Nationality for registration",
+                        IsActive = true,
+                        ModifiedBy =user.Id,
+                        CreatedBy =user.Id,
+                        Title ="Botswana",
+                    },
+                    new Common{
+                        Code = "NATIONALITY" ,
+                        Description ="Nationality for registration",
+                        IsActive = true,
+                        ModifiedBy =user.Id,
+                        CreatedBy =user.Id,
+                        Title ="Bouvet Island",
+                    },
+                    new Common{
+                        Code = "NATIONALITY" ,
+                        Description ="Nationality for registration",
+                        IsActive = true,
+                        ModifiedBy =user.Id,
+                        CreatedBy =user.Id,
+                        Title ="Brazil",
+                    },
+                    new Common{
+                        Code = "NATIONALITY" ,
+                        Description ="Nationality for registration",
+                        IsActive = true,
+                        ModifiedBy =user.Id,
+                        CreatedBy =user.Id,
+                        Title ="British Indian Ocean Territory",
+                    },
+                    new Common{
+                        Code = "NATIONALITY" ,
+                        Description ="Nationality for registration",
+                        IsActive = true,
+                        ModifiedBy =user.Id,
+                        CreatedBy =user.Id,
+                        Title ="Brunei",
+                    },
+                    new Common{
+                        Code = "NATIONALITY" ,
+                        Description ="Nationality for registration",
+                        IsActive = true,
+                        ModifiedBy =user.Id,
+                        CreatedBy =user.Id,
+                        Title ="Bulgaria",
+                    },
+                    new Common{
+                        Code = "NATIONALITY" ,
+                        Description ="Nationality for registration",
+                        IsActive = true,
+                        ModifiedBy =user.Id,
+                        CreatedBy =user.Id,
+                        Title ="Burkina Faso",
+                    },
+                    new Common{
+                        Code = "NATIONALITY" ,
+                        Description ="Nationality for registration",
+                        IsActive = true,
+                        ModifiedBy =user.Id,
+                        CreatedBy =user.Id,
+                        Title ="Burundi",
+                    },
+                    new Common{
+                        Code = "NATIONALITY" ,
+                        Description ="Nationality for registration",
+                        IsActive = true,
+                        ModifiedBy =user.Id,
+                        CreatedBy =user.Id,
+                        Title ="Cambodia",
+                    },
+                    new Common{
+                        Code = "NATIONALITY" ,
+                        Description ="Nationality for registration",
+                        IsActive = true,
+                        ModifiedBy =user.Id,
+                        CreatedBy =user.Id,
+                        Title ="Cameroon",
+                    },
+                    new Common{
+                        Code = "NATIONALITY" ,
+                        Description ="Nationality for registration",
+                        IsActive = true,
+                        ModifiedBy =user.Id,
+                        CreatedBy =user.Id,
+                        Title ="Canada",
+                    },
+                    new Common{
+                        Code = "NATIONALITY" ,
+                        Description ="Nationality for registration",
+                        IsActive = true,
+                        ModifiedBy =user.Id,
+                        CreatedBy =user.Id,
+                        Title ="Cape Verde",
+                    },
+                    new Common{
+                        Code = "NATIONALITY" ,
+                        Description ="Nationality for registration",
+                        IsActive = true,
+                        ModifiedBy =user.Id,
+                        CreatedBy =user.Id,
+                        Title ="Cayman Islands",
+                    },
+                    new Common{
+                        Code = "NATIONALITY" ,
+                        Description ="Nationality for registration",
+                        IsActive = true,
+                        ModifiedBy =user.Id,
+                        CreatedBy =user.Id,
+                        Title ="Central African Republic",
+                    },
+                    new Common{
+                        Code = "NATIONALITY" ,
+                        Description ="Nationality for registration",
+                        IsActive = true,
+                        ModifiedBy =user.Id,
+                        CreatedBy =user.Id,
+                        Title ="Chad",
+                    },
+                    new Common{
+                        Code = "NATIONALITY" ,
+                        Description ="Nationality for registration",
+                        IsActive = true,
+                        ModifiedBy =user.Id,
+                        CreatedBy =user.Id,
+                        Title ="Chile",
+                    },
+                    new Common{
+                        Code = "NATIONALITY" ,
+                        Description ="Nationality for registration",
+                        IsActive = true,
+                        ModifiedBy =user.Id,
+                        CreatedBy =user.Id,
+                        Title ="China",
+                    },
+                    new Common{
+                        Code = "NATIONALITY" ,
+                        Description ="Nationality for registration",
+                        IsActive = true,
+                        ModifiedBy =user.Id,
+                        CreatedBy =user.Id,
+                        Title ="Christmas Island",
+                    },
+                    new Common{
+                        Code = "NATIONALITY" ,
+                        Description ="Nationality for registration",
+                        IsActive = true,
+                        ModifiedBy =user.Id,
+                        CreatedBy =user.Id,
+                        Title ="Cocos (Keeling) Islands",
+                    },
+                    new Common{
+                        Code = "NATIONALITY" ,
+                        Description ="Nationality for registration",
+                        IsActive = true,
+                        ModifiedBy =user.Id,
+                        CreatedBy =user.Id,
+                        Title ="Colombia",
+                    },
+                    new Common{
+                        Code = "NATIONALITY" ,
+                        Description ="Nationality for registration",
+                        IsActive = true,
+                        ModifiedBy =user.Id,
+                        CreatedBy =user.Id,
+                        Title ="Comoros",
+                    },
+                    new Common{
+                        Code = "NATIONALITY" ,
+                        Description ="Nationality for registration",
+                        IsActive = true,
+                        ModifiedBy =user.Id,
+                        CreatedBy =user.Id,
+                        Title ="Cook Islands", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Costa Rica", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Cote D'Ivoire (Ivory Coast)", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Croatia (Hrvatska)", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Cuba", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Cyprus", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Czech Republic", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Democratic Republic Of The Congo", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Denmark", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Djibouti", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Dominica", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Dominican Republic", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="East Timor", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Ecuador", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Egypt", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="El Salvador", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Equatorial Guinea", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Eritrea", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Estonia", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Ethiopia", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="External Territories of Australia", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Falkland Islands", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Faroe Islands", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Fiji Islands", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Finland", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="France", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="French Guiana", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="French Polynesia", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="French Southern Territories", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Gabon", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Gambia The", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Georgia", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Germany", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Ghana", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Gibraltar", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Greece", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Greenland", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Grenada", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Guadeloupe", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Guam", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Guatemala", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Guernsey and Alderney", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Guinea", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Guinea-Bissau", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Guyana", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Haiti", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Heard and McDonald Islands", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Honduras", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Hong Kong S.A.R.", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Hungary", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Iceland", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="India", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Indonesia", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Iran", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Iraq", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Ireland", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Israel", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Italy", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Jamaica", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Japan", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Jersey", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Jordan", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Kazakhstan", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Kenya", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Kiribati", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Korea North", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Korea South", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Kuwait", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Kyrgyzstan", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Laos", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Latvia", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Lebanon", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Lesotho", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Liberia", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Libya", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Liechtenstein", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Lithuania", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Luxembourg", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Macau S.A.R.", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Macedonia", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Madagascar", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Malawi", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Malaysia", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Maldives", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Mali", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Malta", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Man (Isle of)", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Marshall Islands", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Martinique", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Mauritania", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Mauritius", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Mayotte", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Mexico", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Micronesia", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Moldova", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Monaco", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Mongolia", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Montserrat", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Morocco", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Mozambique", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Myanmar", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Namibia", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Nauru", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Nepal", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Netherlands Antilles", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Netherlands The", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="New Caledonia", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="New Zealand", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Nicaragua", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Niger", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Nigeria", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Niue", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Norfolk Island", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Northern Mariana Islands", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Norway", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Oman", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Pakistan", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Palau", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Palestinian Territory Occupied", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Panama", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Papua new Guinea", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Paraguay", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Peru", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Philippines", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Pitcairn Island", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Poland", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Portugal", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Puerto Rico", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Qatar", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Republic Of The Congo", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Reunion", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Romania", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Russia", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Rwanda", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Saint Helena", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Saint Kitts And Nevis", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Saint Lucia", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Saint Pierre and Miquelon", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Saint Vincent And The Grenadines", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Samoa", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="San Marino", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Sao Tome and Principe", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Saudi Arabia", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Senegal", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Serbia", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Seychelles", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Sierra Leone", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Singapore", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Slovakia", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Slovenia", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Smaller Territories of the UK", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Solomon Islands", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Somalia", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="South Africa", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="South Georgia", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="South Sudan", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Spain", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Sri Lanka", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Sudan", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Suriname", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Svalbard And Jan Mayen Islands", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Swaziland", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Sweden", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Switzerland", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Syria", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Taiwan", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Tajikistan", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Tanzania", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Thailand", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Togo", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Tokelau", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Tonga", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Trinidad And Tobago", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Tunisia", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Turkey", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Turkmenistan", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Turks And Caicos Islands", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Tuvalu", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Uganda", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Ukraine", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="United Arab Emirates", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="United Kingdom", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="United States", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="United States Minor Outlying Islands", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Uruguay", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Uzbekistan", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Vanuatu", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Vatican City State (Holy See)", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Venezuela", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Vietnam", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Virgin Islands (British)", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Virgin Islands (US)", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Wallis And Futuna Islands", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Western Sahara", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Yemen", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Yugoslavia", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Zambia", },
+
+    new Common{     Code = "NATIONALITY" ,      Description ="Nationality for registration",        IsActive = true,        ModifiedBy =user.Id,        CreatedBy =user.Id,     Title ="Zimbabwe", },
                     };
                     context.Common.AddRange(lists);
                     context.SaveChanges();

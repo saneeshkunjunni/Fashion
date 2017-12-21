@@ -50,11 +50,13 @@ namespace FashionModeling
 
 
 
-            container.RegisterType<IJobServices, JobServices>();
-            container.RegisterType<IGalleryServices, GalleryServices>();
             container.RegisterType<IAddressServices, AddressServices>();
-            container.RegisterType<ITagServices, TagServices>();
             container.RegisterType<ICommonServices, CommonServices>();
+            container.RegisterType<IDropdownServices, DropdownServices>();
+            container.RegisterType<IGalleryServices, GalleryServices>();
+            container.RegisterType<IJobServices, JobServices>();
+            container.RegisterType<INotificationServices, NotificationServices>();
+            container.RegisterType<ITagServices, TagServices>();
             RegisterTypes(container);
 
             return container;

@@ -14,6 +14,9 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using FashionModeling.DAL;
 using System.Configuration;
 using FashionModeling.Services.Interfaces;
+using System.Net;
+using FashionModeling.Models.Helpers;
+using System.IO;
 
 namespace FashionModeling.Controllers
 {
@@ -22,17 +25,17 @@ namespace FashionModeling.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private ITagServices _tagServices;
+        private IDropdownServices _dropdownServices;
 
         public AccountController()
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ITagServices tagServices)
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, IDropdownServices dropdownServices)
         {
             UserManager = userManager;
             SignInManager = signInManager;
-            _tagServices = tagServices;
+            _dropdownServices = dropdownServices;
         }
 
         public ApplicationSignInManager SignInManager
@@ -158,13 +161,14 @@ namespace FashionModeling.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var result = await UserManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
+                var admins = ConfigurationManager.AppSettings["admins"];
+                if (admins.Split(',').Contains(model.Email.ToLower()))
                 {
-                    var admins = ConfigurationManager.AppSettings["admins"];
-                    if (admins.Split(',').Contains(model.Email.ToLower()))
+                    var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                    var result = await UserManager.CreateAsync(user, model.Password);
+                    if (result.Succeeded)
                     {
+
                         var RoleManagers = new RoleManager<IdentityRole>(
                   new RoleStore<IdentityRole>(new ApplicationDbContext()));
                         if (!RoleManagers.RoleExists("Admin"))
@@ -177,32 +181,110 @@ namespace FashionModeling.Controllers
                             //user don't have exhibitor role. add role
                             var roleresult = UserManager.AddToRole(user.Id, "Admin");
                         }
+
+
+                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
+                        // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
+                        // Send an email with this link
+                        // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                        // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                        // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                        return RedirectToAction("Index", "Home");
                     }
-
-                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-
-                    // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                    return RedirectToAction("Index", "Home");
+                    AddErrors(result);
                 }
-                AddErrors(result);
+                else
+                {
+                    ModelState.AddModelError("Email", "You are not a register admin to create account");
+                }
             }
 
             // If we got this far, something failed, redisplay form
             return View(model);
         }
         [AllowAnonymous]
-        public ActionResult Createprofile()
+        [HttpPost]
+        public ActionResult UploadFile()
+        {
+            HttpPostedFileBase myFile = Request.Files["MyFile"];
+            bool isUploaded = false;
+
+            string tempFolderName = ConfigurationManager.AppSettings["Image.TempFolderName"];
+
+            if (myFile != null && myFile.ContentLength != 0)
+            {
+                string tempFolderPath = Server.MapPath("~/" + tempFolderName);
+
+                if (FileHelper.CreateFolderIfNeeded(tempFolderPath))
+                {
+                    try
+                    {
+                        myFile.SaveAs(Path.Combine(tempFolderPath, myFile.FileName));
+                        isUploaded = true;
+                    }
+                    catch (Exception) {  /*TODO: You must process this exception.*/}
+                }
+            }
+
+            string filePath = string.Concat("/", tempFolderName, "/", myFile.FileName);
+            return Json(new { isUploaded, filePath }, "text/html");
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        public ActionResult CropImage(string imagePath,int? cropPointX,int? cropPointY,int? imageCropWidth,int? imageCropHeight)
+        {
+            if (string.IsNullOrEmpty(imagePath) || !cropPointX.HasValue || !cropPointY.HasValue || !imageCropWidth.HasValue || !imageCropHeight.HasValue)
+            {
+                return new HttpStatusCodeResult((int)HttpStatusCode.BadRequest);
+            }
+
+            byte[] imageBytes = System.IO.File.ReadAllBytes(Server.MapPath(imagePath));
+            byte[] croppedImage = ImageHelper.CropImage(imageBytes, cropPointX.Value, cropPointY.Value, imageCropWidth.Value, imageCropHeight.Value);
+
+            string tempFolderName = Server.MapPath("~/" + ConfigurationManager.AppSettings["Image.TempFolderName"]);
+
+            string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(imagePath);
+            string fileName = Path.GetFileName(imagePath).Replace(fileNameWithoutExtension, fileNameWithoutExtension + "_cropped");
+
+            try
+            {
+                FileHelper.SaveFile(croppedImage, Path.Combine(tempFolderName, fileName));
+            }
+            catch (Exception)
+            {
+                //Log an error     
+                return new HttpStatusCodeResult((int)HttpStatusCode.InternalServerError);
+            }
+
+            string photoPath = string.Concat("/", ConfigurationManager.AppSettings["Image.TempFolderName"], "/", fileName);
+            return Json(new { photoPath = photoPath }, JsonRequestBehavior.AllowGet);
+        }
+        [AllowAnonymous]
+        public ActionResult CreateProfile()
         {
             ProfileViewModel model = new ProfileViewModel();
-            model.TagItems.AddRange(_tagServices.GetTags(x => x.IsActive == true).Select(x=> new SelectListItem()
-            {
-                Value = x.TagId.ToString(),
-               Text =x.TagName
-            }));
+
+            model.CategoryList.AddRange(_dropdownServices.GetCategories());
+            model.ChestSizeList.AddRange(_dropdownServices.GetChestSize());
+            model.EthnicityList.AddRange(_dropdownServices.GetEthnicities());
+            model.ExperinceList.AddRange(_dropdownServices.GetExperiences());
+            model.EyeColorList.AddRange(_dropdownServices.GetEyeColors());            
+            model.FluentLanguageList.AddRange(_dropdownServices.GetFluentLanguages());
+            model.HairColorList.AddRange(_dropdownServices.GetHairColors());
+            model.HeightList.AddRange(_dropdownServices.GetHeights());
+            model.HipsSizeList.AddRange(_dropdownServices.GetHipSize());
+            model.JacketSizeList.AddRange(_dropdownServices.GetJacketSize());
+            model.NationalityBirthList.AddRange(_dropdownServices.GetNationalities());
+            model.NationalityList.AddRange(_dropdownServices.GetNationalities());
+            model.PantSizeList.AddRange(_dropdownServices.GetPantSize());
+            model.ShoeSizeList.AddRange(_dropdownServices.GetShoeSize());
+            model.SpecialFeatureList.AddRange(_dropdownServices.GetSpecialFeatures());
+            model.TagList.AddRange(_dropdownServices.GetTags());
+            model.TshirtSizeList.AddRange(_dropdownServices.GetTshirtSizes());
+            model.WaistSizeList.AddRange(_dropdownServices.GetWaistSize());
+
             return View(model);
         }
 
@@ -211,7 +293,7 @@ namespace FashionModeling.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Createprofile(ProfileViewModel model)
+        public async Task<ActionResult> CreateProfile(ProfileViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -247,11 +329,24 @@ namespace FashionModeling.Controllers
                 }
                 AddErrors(result);
             }
-            model.TagItems.AddRange(_tagServices.GetTags(x => x.IsActive == true).Select(x => new SelectListItem()
-            {
-                Value = x.TagId.ToString(),
-                Text = x.TagName
-            }));
+            model.CategoryList.AddRange(_dropdownServices.GetCategories());
+            model.ChestSizeList.AddRange(_dropdownServices.GetChestSize());
+            model.EthnicityList.AddRange(_dropdownServices.GetEthnicities());
+            model.ExperinceList.AddRange(_dropdownServices.GetExperiences());
+            model.EyeColorList.AddRange(_dropdownServices.GetEyeColors());
+            model.FluentLanguageList.AddRange(_dropdownServices.GetFluentLanguages());
+            model.HairColorList.AddRange(_dropdownServices.GetHairColors());
+            model.HeightList.AddRange(_dropdownServices.GetHeights());
+            model.HipsSizeList.AddRange(_dropdownServices.GetHipSize());
+            model.JacketSizeList.AddRange(_dropdownServices.GetJacketSize());
+            model.NationalityBirthList.AddRange(_dropdownServices.GetNationalities());
+            model.NationalityList.AddRange(_dropdownServices.GetNationalities());
+            model.PantSizeList.AddRange(_dropdownServices.GetPantSize());
+            model.ShoeSizeList.AddRange(_dropdownServices.GetShoeSize());
+            model.SpecialFeatureList.AddRange(_dropdownServices.GetSpecialFeatures());
+            model.TagList.AddRange(_dropdownServices.GetTags());
+            model.TshirtSizeList.AddRange(_dropdownServices.GetTshirtSizes());
+            model.WaistSizeList.AddRange(_dropdownServices.GetWaistSize());
             // If we got this far, something failed, redisplay form
             return View(model);
         }

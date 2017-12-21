@@ -10,7 +10,8 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
-    <link rel="stylesheet" href='@Url.Content("~/Content/bootstrap.css")' />
+    @*<link rel="stylesheet" href='@Url.Content("~/Content/bootstrap.css")' />*@
+    <link href="~/Content/bootstrap3.3.min.css" rel="stylesheet" />
     <!-- Font Awesome -->
     <link rel="stylesheet" href='@Url.Content("~/Content/font-awesome.min.css")' />
     <!-- Ionicons -->
@@ -32,6 +33,11 @@
     <![endif]-->
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <style>
+        .control-label::after {
+            content: ' :';
+        }
+    </style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
@@ -408,10 +414,16 @@
                             <span> Eye Color</span>
                         </a>
                     </li>
-                    <li class="EYECOLOR">
-                        <a href="@Url.Action("Common","Admin",routeValues: new { type="EYECOLOR" })">
+                    <li class="LANGUAGE">
+                        <a href="@Url.Action("Common","Admin",routeValues: new { type="LANGUAGE" })">
                             <i class="fa fa-circle-o text-orange"></i>
-                            <span> Eye Color</span>
+                            <span> Language</span>
+                        </a>
+                    </li>
+                    <li class="NATIONALITY">
+                        <a href="@Url.Action("Common","Admin",routeValues: new { type="NATIONALITY" })">
+                            <i class="fa fa-circle-o text-purple"></i>
+                            <span> Nationality</span>
                         </a>
                     </li>
                     <li class="Users">
@@ -439,8 +451,7 @@
     <!-- jQuery 3 -->
     @Scripts.Render("~/bundles/jquery")
     <!-- Bootstrap 3.3.7 -->
-    @*@Scripts.Render("~/bundles/bootstrap")*@
-    <script src='@Url.Content("~/Scripts/bootstrap.bundle.min.js")'></script>
+    @Scripts.Render("~/bundles/bootstrap")
 
     <!-- FastClick -->
     <script src='@Url.Content("~/Scripts/fastclick.js")'></script>
@@ -453,11 +464,11 @@
     <script src='@Url.Content("~/Scripts/jquery.slimscroll.min.js")'></script>
     <!-- ChartJS -->
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src='@Url.Content("~/Scripts//pages/dashboard2.js")'></script>
+    <script src='@Url.Content("~/Scripts/pages/dashboard2.js")'></script>
     <!-- AdminLTE for demo purposes -->
     <script src="~/Scripts/moment.min.js"></script>
     <script src='@Url.Content("~/Scripts/demo.js")'></script>
-    
+
     <script>
         $(function () {
             'use strict'

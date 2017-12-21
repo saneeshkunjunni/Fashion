@@ -44,12 +44,17 @@
                 margin-top: 10px;
                 width: 60px
             }
+        .required {
+            padding-left:3px;
+            color: #f00;
+        } 
     </style>
     <!-- Fonts and Icons -->
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' />
     <link href="~/Content/themify-icons.css" rel="stylesheet" />
     <link href="~/Content/chosen.min.css" rel="stylesheet" />
+    <link href="~/Content/custom-chosen-bootstrap.css" rel="stylesheet" />
 </head>
 <body>
     <div class="image-container set-full-height" style="background-image: url('/Images/paper-2.jpeg')">
@@ -86,27 +91,11 @@
                                     </div>
                                     <ul>
                                         <li>
-                                            <a href="#profile" data-toggle="tab">
-                                                <div class="icon-circle">
-                                                    <i class="ti-apple"></i>
-                                                </div>
-                                                Profile
-                                            </a>
-                                        </li>
-                                        <li>
                                             <a href="#about" data-toggle="tab">
                                                 <div class="icon-circle">
                                                     <i class="ti-user"></i>
                                                 </div>
                                                 About
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#account" data-toggle="tab">
-                                                <div class="icon-circle">
-                                                    <i class="ti-settings"></i>
-                                                </div>
-                                                Work
                                             </a>
                                         </li>
                                         <li>
@@ -117,117 +106,104 @@
                                                 Address
                                             </a>
                                         </li>
+                                        <li>
+                                            <a href="#brand" data-toggle="tab">
+                                                <div class="icon-circle">
+                                                    <i class="ti-settings"></i>
+                                                </div>
+                                                Brand
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#profile" data-toggle="tab">
+                                                <div class="icon-circle">
+                                                    <i class="ti-apple"></i>
+                                                </div>
+                                                Profile
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div>
                                 <div class="tab-content">
-                                    <div class="tab-pane" id="profile">
-                                        <div class="row">
-                                            <h5 class="info-text"> Please tell us more about yourself.</h5>
-                                            <div class="col-sm-4  col-sm-offset-1">
-                                                <div class="picture-container">
-                                                    <div class="picture">
-                                                        <img src="assets/img/default-avatar.jpg" class="picture-src" id="wizardPicturePreview" title="" />
-                                                        <input type="file" id="wizard-picture">
-                                                    </div>
-                                                    <h6>Choose Picture</h6>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    @Html.LabelFor(model => model.Tags, htmlAttributes: new { @class = "control-label" })
-                                                    @Html.ListBoxFor(x => x.Tags, Model.TagItems, htmlAttributes: new { @class = "form-control" })
-                                                    @Html.ValidationMessageFor(model => model.Tags, "", new { @class = "text-danger" })
-                                                </div>
-
-                                                <div class="form-group">
-                                                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label" })
-                                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-                                                </div>
-                                                <div class="form-group">
-                                                    @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label" })
-                                                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-                                                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-10 col-sm-offset-1">
-                                                <div class="form-group">
-                                                    @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "control-label" })
-                                                    @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control" } })
-                                                    @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                     <div class="tab-pane" id="about">
                                         <div class="row">
                                             <h5 class="info-text"> Please tell us more about yourself.</h5>
-                                            <div class="col-sm-4  col-sm-offset-1">
-                                                <div class="picture-container">
-                                                    <div class="picture">
-                                                        <img src="assets/img/default-avatar.jpg" class="picture-src" id="wizardPicturePreview" title="" />
-                                                        <input type="file" id="wizard-picture">
-                                                    </div>
-                                                    <h6>Choose Picture</h6>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6">
+
+                                            <div class="col-sm-5 col-sm-offset-1">
                                                 <div class="form-group">
-                                                    @Html.LabelFor(model => model.Tags, htmlAttributes: new { @class = "control-label" })
-                                                    @Html.ListBoxFor(x => x.Tags, Model.TagItems, htmlAttributes: new { @class = "form-control" })
+                                                    @Html.LabelForRequired(model => model.FirstName, htmlAttributes: new { @class = "control-label" })
+                                                    @Html.EditorFor(x => x.FirstName, new { htmlAttributes = new { @class = "form-control" } })
                                                     @Html.ValidationMessageFor(model => model.Tags, "", new { @class = "text-danger" })
                                                 </div>
-
+                                            </div>
+                                            <div class="col-sm-5">
                                                 <div class="form-group">
-                                                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label" })
-                                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                                    @Html.LabelForRequired(model => model.LastName, htmlAttributes: new { @class = "control-label" })
+                                                    @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
                                                 </div>
+                                            </div>
+                                            <div class="col-sm-5 col-sm-offset-1">
                                                 <div class="form-group">
-                                                    @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label" })
-                                                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-                                                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                                    @Html.LabelForRequired(model => model.Dob, htmlAttributes: new { @class = "control-label" })
+                                                    @Html.EditorFor(model => model.Dob, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Dob, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-5">
+                                                <div class="form-group">
+                                                    @Html.LabelForRequired(model => model.Ethnicity, htmlAttributes: new { @class = "control-label" })
+                                                    @Html.DropDownListFor(model => model.Ethnicity, Model.EthnicityList, "-- Select --", htmlAttributes: new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <div class="col-sm-5 col-sm-offset-1">
+                                                <div class="form-group">
+                                                    @Html.LabelForRequired(model => model.MobileNumber, htmlAttributes: new { @class = "control-label" })
+                                                    @Html.EditorFor(model => model.MobileNumber, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.MobileNumber, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-5">
+                                                <div class="form-group">
+                                                    @Html.LabelForRequired(model => model.WhatsApp, htmlAttributes: new { @class = "control-label" })
+                                                    @Html.EditorFor(model => model.WhatsApp, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.WhatsApp, "", new { @class = "text-danger" })
                                                 </div>
                                             </div>
                                             <div class="col-sm-10 col-sm-offset-1">
-                                                <div class="form-group">
-                                                    @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "control-label" })
-                                                    @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control" } })
-                                                    @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                                                <div class="follows">
+                                                    @Html.LabelForRequired(model => model.Category, htmlAttributes: new { @class = "control-label" })
+                                                    @Html.DropDownListFor(model => model.Category, Model.CategoryList, "-- Select --", htmlAttributes: new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane" id="account">
-                                        <h5 class="info-text"> What are you doing? (checkboxes) </h5>
-                                        <div class="row">
-                                            <div class="col-sm-8 col-sm-offset-2">
-                                                <div class="col-sm-4">
-                                                    <div class="choice" data-toggle="wizard-checkbox">
-                                                        <input type="checkbox" name="jobb" value="Design">
-                                                        <div class="card card-checkboxes card-hover-effect">
-                                                            <i class="ti-paint-roller"></i>
-                                                            <p>Design</p>
-                                                        </div>
-                                                    </div>
+                                            <div class="col-sm-5 col-sm-offset-1">
+                                                <div class="form-group">
+                                                    @Html.LabelForRequired(model => model.NationalityByBirth, htmlAttributes: new { @class = "control-label" })
+                                                    @Html.DropDownListFor(model => model.NationalityByBirth, Model.NationalityBirthList, "-- Select --", htmlAttributes: new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.NationalityByBirth, "", new { @class = "text-danger" })
                                                 </div>
-                                                <div class="col-sm-4">
-                                                    <div class="choice" data-toggle="wizard-checkbox">
-                                                        <input type="checkbox" name="jobb" value="Code">
-                                                        <div class="card card-checkboxes card-hover-effect">
-                                                            <i class="ti-pencil-alt"></i>
-                                                            <p>Code</p>
-                                                        </div>
-                                                    </div>
+                                            </div>
+                                            <div class="col-sm-5">
+                                                <div class="form-group">
+                                                    @Html.LabelForRequired(model => model.NationalityByPassport, htmlAttributes: new { @class = "control-label" })
+                                                    @Html.DropDownListFor(model => model.NationalityByPassport, Model.NationalityList, "-- Select --", htmlAttributes: new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.NationalityByPassport, "", new { @class = "text-danger" })
                                                 </div>
-                                                <div class="col-sm-4">
-                                                    <div class="choice" data-toggle="wizard-checkbox">
-                                                        <input type="checkbox" name="jobb" value="Develop">
-                                                        <div class="card card-checkboxes card-hover-effect">
-                                                            <i class="ti-star"></i>
-                                                            <p>Develop</p>
-                                                        </div>
-                                                    </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <div class="col-sm-10 col-sm-offset-1">
+                                                <div class="form-group">
+                                                    @Html.LabelForRequired(model => model.FacebookLink, htmlAttributes: new { @class = "control-label" })
+                                                    @Html.EditorFor(model => model.FacebookLink, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.FacebookLink, "", new { @class = "text-danger" })
+                                                </div>
+                                                <div class="form-group">
+                                                    @Html.LabelForRequired(model => model.InstagramLink, htmlAttributes: new { @class = "control-label" })
+                                                    @Html.EditorFor(model => model.InstagramLink, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.InstagramLink, "", new { @class = "text-danger" })
                                                 </div>
                                             </div>
                                         </div>
@@ -237,59 +213,195 @@
                                             <div class="col-sm-12">
                                                 <h5 class="info-text"> Are you living in a nice area? </h5>
                                             </div>
+                                            <div class="col-sm-10 col-sm-offset-1">
+                                                <div class="form-group">
+                                                    @Html.LabelForRequired(model => model.AddressLine1, htmlAttributes: new { @class = "control-label" })
+                                                    @Html.EditorFor(model => model.AddressLine1, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.AddressLine1, "", new { @class = "text-danger" })
+                                                </div>
+                                                <div class="form-group">
+                                                    @Html.LabelForRequired(model => model.AddressLine2, htmlAttributes: new { @class = "control-label" })
+                                                    @Html.EditorFor(model => model.AddressLine2, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.AddressLine2, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
                                             <div class="col-sm-7 col-sm-offset-1">
                                                 <div class="form-group">
-                                                    <label>Street Name</label>
-                                                    <input type="text" class="form-control" placeholder="5h Avenue">
+                                                    @Html.LabelForRequired(model => model.State, htmlAttributes: new { @class = "control-label" })
+                                                    @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
                                                 </div>
                                             </div>
                                             <div class="col-sm-3">
                                                 <div class="form-group">
-                                                    <label>Street Number</label>
-                                                    <input type="text" class="form-control" placeholder="242">
+                                                    @Html.LabelForRequired(model => model.AreaCode, htmlAttributes: new { @class = "control-label" })
+                                                    @Html.EditorFor(model => model.AreaCode, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.AreaCode, "", new { @class = "text-danger" })
                                                 </div>
                                             </div>
                                             <div class="col-sm-5 col-sm-offset-1">
                                                 <div class="form-group">
-                                                    <label>City</label>
-                                                    <input type="text" class="form-control" placeholder="New York...">
+                                                    @Html.LabelForRequired(model => model.Suburb, htmlAttributes: new { @class = "control-label" })
+                                                    @Html.EditorFor(model => model.Suburb, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Suburb, "", new { @class = "text-danger" })
                                                 </div>
                                             </div>
                                             <div class="col-sm-5">
                                                 <div class="form-group">
-                                                    <label>Country</label><br>
-                                                    <select name="country" class="form-control">
-                                                        <option value="Afghanistan">
-                                                            Afghanistan
-                                                        </option>
-                                                        <option value="Albania">
-                                                            Albania
-                                                        </option>
-                                                        <option value="Algeria">
-                                                            Algeria
-                                                        </option>
-                                                        <option value="American Samoa">
-                                                            American Samoa
-                                                        </option>
-                                                        <option value="Andorra">
-                                                            Andorra
-                                                        </option>
-                                                        <option value="Angola"> Angola </option>
-
-                                                        <option value="Anguilla"> Anguilla </option>
-
-                                                        <option value="Antarctica"> Antarctica </option>
-
-                                                        <option value="...">...</option>
-                                                    </select>
+                                                    @Html.LabelForRequired(model => model.WillToTravel, htmlAttributes: new { @class = "control-label" })
+                                                    <div class="checkbox">
+                                                        @Html.CheckBoxFor(model => model.WillToTravel, htmlAttributes: new { @class = "form-control" })
+                                                        @Html.ValidationMessageFor(model => model.WillToTravel, "", new { @class = "text-danger" })
+                                                    </div>
                                                 </div>
-
+                                            </div>
+                                            <div class="col-sm-10 col-sm-offset-1">
+                                                <div class="form-group">
+                                                    @Html.LabelForRequired(model => model.AddressMap, htmlAttributes: new { @class = "control-label" })
+                                                    @Html.EditorFor(model => model.AddressMap, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.AddressMap, "", new { @class = "text-danger" })
+                                                </div>
                                             </div>
 
                                         </div>
 
                                     </div>
-
+                                    <div class="tab-pane" id="brand">
+                                        <h5 class="info-text"> What are you doing? </h5>
+                                        <div class="row">
+                                            <div class="col-sm-10 col-sm-offset-1">
+                                                <div class="form-group">
+                                                    @Html.LabelForRequired(model => model.Tags, htmlAttributes: new { @class = "control-label" })
+                                                    @Html.ListBoxFor(x => x.Tags, Model.TagList, htmlAttributes: new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.Tags, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-5 col-sm-offset-1">
+                                                <div class="form-group">
+                                                    @Html.LabelForRequired(model => model.HairColor, htmlAttributes: new { @class = "control-label" })
+                                                    @Html.DropDownListFor(model => model.HairColor, Model.HairColorList, "-- Select --", htmlAttributes: new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.HairColor, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-5">
+                                                <div class="form-group">
+                                                    @Html.LabelForRequired(model => model.EyeColor, htmlAttributes: new { @class = "control-label" })
+                                                    @Html.DropDownListFor(model => model.EyeColor, Model.EyeColorList, "-- Select --", htmlAttributes: new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.EyeColor, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-5 col-sm-offset-1">
+                                                <div class="form-group">
+                                                    @Html.LabelForRequired(model => model.Height, htmlAttributes: new { @class = "control-label" })
+                                                    @Html.DropDownListFor(model => model.Height, Model.HeightList, "-- Select --", htmlAttributes: new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.Height, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-5">
+                                                <div class="form-group">
+                                                    @Html.LabelForRequired(model => model.ChestSize, htmlAttributes: new { @class = "control-label" })
+                                                    @Html.DropDownListFor(model => model.ChestSize, Model.ChestSizeList, "-- Select --", htmlAttributes: new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.ChestSize, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-5 col-sm-offset-1">
+                                                <div class="form-group">
+                                                    @Html.LabelForRequired(model => model.WaistSize, htmlAttributes: new { @class = "control-label" })
+                                                    @Html.DropDownListFor(model => model.WaistSize, Model.WaistSizeList, "-- Select --", htmlAttributes: new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.WaistSize, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-5">
+                                                <div class="form-group">
+                                                    @Html.LabelForRequired(model => model.HipsSize, htmlAttributes: new { @class = "control-label" })
+                                                    @Html.DropDownListFor(model => model.HipsSize, Model.HipsSizeList, "-- Select --", htmlAttributes: new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.HipsSize, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-5 col-sm-offset-1">
+                                                <div class="form-group">
+                                                    @Html.LabelForRequired(model => model.TshirtSize, htmlAttributes: new { @class = "control-label" })
+                                                    @Html.DropDownListFor(model => model.TshirtSize, Model.TshirtSizeList, "-- Select --", htmlAttributes: new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.TshirtSize, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-5">
+                                                <div class="form-group">
+                                                    @Html.LabelForRequired(model => model.PantSize, htmlAttributes: new { @class = "control-label" })
+                                                    @Html.DropDownListFor(model => model.PantSize, Model.PantSizeList, "-- Select --", htmlAttributes: new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.PantSize, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-5 col-sm-offset-1">
+                                                <div class="form-group">
+                                                    @Html.LabelForRequired(model => model.ShoeSize, htmlAttributes: new { @class = "control-label" })
+                                                    @Html.DropDownListFor(model => model.ShoeSize, Model.ShoeSizeList, "-- Select --", htmlAttributes: new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.ShoeSize, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-5">
+                                                <div class="form-group">
+                                                    @Html.LabelForRequired(model => model.JacketSize, htmlAttributes: new { @class = "control-label" })
+                                                    @Html.DropDownListFor(model => model.JacketSize, Model.JacketSizeList, "-- Select --", htmlAttributes: new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.JacketSize, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-10 col-sm-offset-1">
+                                                <div class="form-group">
+                                                    @Html.LabelForRequired(model => model.SpecialFeatures, htmlAttributes: new { @class = "control-label" })
+                                                    @Html.DropDownListFor(x => x.SpecialFeatures, Model.SpecialFeatureList, "-- Select --", htmlAttributes: new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.SpecialFeatures, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-10 col-sm-offset-1">
+                                                <div class="form-group">
+                                                    @Html.LabelForRequired(model => model.Experince, htmlAttributes: new { @class = "control-label" })
+                                                    @Html.DropDownListFor(x => x.Experince, Model.ExperinceList, "-- Select --", htmlAttributes: new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.Experince, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-10 col-sm-offset-1">
+                                                <div class="form-group">
+                                                    @Html.LabelForRequired(model => model.FluentLanguages, htmlAttributes: new { @class = "control-label" })
+                                                    @Html.ListBoxFor(x => x.FluentLanguages, Model.FluentLanguageList, htmlAttributes: new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.FluentLanguages, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="profile">
+                                        <div class="row">
+                                            <h5 class="info-text"> Please Create Your Personal Account.</h5>
+                                            <div class="col-sm-4  col-sm-offset-1">
+                                                <div class="picture-container">
+                                                    <div class="picture">
+                                                        <img src="assets/img/default-avatar.jpg" class="picture-src" id="wizardPicturePreview" title="" />
+                                                        @Html.TextBoxFor(model => model.ProfilePics,htmlAttributes: new {type="file"} )
+                                                    </div>
+                                                    <h6>Choose Picture</h6>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    @Html.LabelForRequired(model => model.Email, htmlAttributes: new { @class = "control-label" })
+                                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                                </div>
+                                                <div class="form-group">
+                                                    @Html.LabelForRequired(model => model.Password, htmlAttributes: new { @class = "control-label" })
+                                                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-10 col-sm-offset-1">
+                                                <div class="form-group">
+                                                    @Html.LabelForRequired(model => model.ConfirmPassword, htmlAttributes: new { @class = "control-label" })
+                                                    @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="wizard-footer">
@@ -321,6 +433,8 @@
     <script src="@Url.Content("~/Scripts/custom/bootstrap.min.js")"></script>
     @*<script src="~/Scripts/bootstrap.bundle.min.js" type="text/javascript"></script>*@
     <script src="@Url.Content("~/Scripts/jquery.bootstrap.wizard.js")" type="text/javascript"></script>
+    <script src="~/Scripts/moment.min.js"></script>
+    <script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
 
     <!--Plugin for the Wizard -->
     <script src="@Url.Content("~/Scripts/paper-bootstrap-wizard.js")" type="text/javascript"></script>
@@ -333,7 +447,27 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $("#Tags").chosen();
-
+            $("#Category").chosen();
+            $("#Experince").chosen();
+            $("#FluentLanguages").chosen();
+            $("#SpecialFeatures").chosen();
+            $("#JacketSize").chosen();
+            $("#PantSize").chosen();
+            $("#TshirtSize").chosen();
+            $("#HipsSize").chosen();
+            $("#WaistSize").chosen();
+            $("#ChestSize").chosen();
+            $("#ShoeSize").chosen();
+            $("#Height").chosen();
+            $('#Ethnicity').chosen();
+            $('#NationalityByBirth').chosen();
+            $('#NationalityByPassport').chosen();
+            $('#HairColor').chosen();
+            $('#EyeColor').chosen();
+            $('#Dob').datetimepicker({
+                    format: 'DD/MM/YYYY'
+                });
+            $(".chosen-container").css("width", "100%");
         });
     </script>
 </body>
