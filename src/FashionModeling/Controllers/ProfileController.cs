@@ -1,5 +1,6 @@
 ﻿using FashionModeling.Models;
 using FashionModeling.Services.Services;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,7 @@ using System.Web.Mvc;
 
 namespace FashionModeling.Controllers
 {
+    [Authorize]
     public class ProfileController : Controller
     {
         GalleryServices galleryServices = new GalleryServices();
@@ -22,8 +24,9 @@ namespace FashionModeling.Controllers
         }
         public ActionResult AddPhoto()
         {
-            return View();
+            return View(new GalleryRegisterModel() { ProfileId = User.Identity.GetUserId(), IsVideo = false });
         }
+        
         [HttpPost]
         public ActionResult AddPhoto(GalleryRegisterModel model)
         {
@@ -31,8 +34,22 @@ namespace FashionModeling.Controllers
             {
                 galleryServices.AddGallery(model);
             }
-            return View();
+            return View(model);
         }
+        public ActionResult AddVideo()
+        {
+            return View(new GalleryRegisterModel() { ProfileId = User.Identity.GetUserId(), IsVideo = true });
+        }
+        [HttpPost]
+        public ActionResult AddVideo(GalleryRegisterModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                galleryServices.AddGallery(model);
+            }
+            return View(model);
+        }
+
         public ActionResult EditPhoto(string id)
         {
             Guid modelId;

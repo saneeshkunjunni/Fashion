@@ -23,7 +23,7 @@ namespace FashionModeling.Services.Services
 
         public IEnumerable<SelectListItem> GetChestSize()
         {
-            return Enumerable.Range(46, 250).Select(i => new SelectListItem() { Text = string.Format("{0} cm", i), Value = string.Format("{0} cm", i) });
+            return Enumerable.Range(46, (250-46)).Select(i => new SelectListItem() { Text = string.Format("{0} cm", i), Value = string.Format("{0} cm", i) });
         }
 
         public IEnumerable<SelectListItem> GetEthnicities()
@@ -73,12 +73,12 @@ namespace FashionModeling.Services.Services
 
         public IEnumerable<SelectListItem> GetHeights()
         {
-            return Enumerable.Range(20, 220).Select(i => new SelectListItem() { Text = string.Format("{0} cm", i), Value= string.Format("{0} cm", i)});
+            return Enumerable.Range(20, (220-20)).Select(i => new SelectListItem() { Text = string.Format("{0} cm", i), Value= string.Format("{0} cm", i)});
         }
 
         public IEnumerable<SelectListItem> GetHipSize()
         {
-            return Enumerable.Range(45, 250).Select(i => new SelectListItem() { Text = string.Format("{0} cm", i), Value = string.Format("{0} cm", i) });
+            return Enumerable.Range(45, (250-45)).Select(i => new SelectListItem() { Text = string.Format("{0} cm", i), Value = string.Format("{0} cm", i) });
         }
 
         public IEnumerable<SelectListItem> GetJacketSize()
@@ -101,12 +101,12 @@ namespace FashionModeling.Services.Services
 
         public IEnumerable<SelectListItem> GetPantSize()
         {
-            return Enumerable.Range(46, 250).Select(i => new SelectListItem() { Text = string.Format("{0} cm", i), Value = string.Format("{0} cm", i) });
+            return Enumerable.Range(24, (45-24)).Select(i => new SelectListItem() { Text = string.Format("{0} EU", i), Value = string.Format("{0} cm", i) });
         }
 
         public IEnumerable<SelectListItem> GetShoeSize()
         {
-            return Enumerable.Range(15, 48).Select(i => new SelectListItem() { Text = string.Format("{0} EU", i), Value = string.Format("{0} EU", i) });
+            return Enumerable.Range(15, (48-15)).Select(i => new SelectListItem() { Text = string.Format("{0} EU", i), Value = string.Format("{0} EU", i) });
         }
 
         public IEnumerable<SelectListItem> GetSpecialFeatures()
@@ -138,7 +138,7 @@ namespace FashionModeling.Services.Services
 
         public IEnumerable<SelectListItem> GetWaistSize()
         {
-            return Enumerable.Range(45, 250).Select(i => new SelectListItem() { Text = string.Format("{0} cm", i), Value = string.Format("{0} cm", i) });
+            return Enumerable.Range(45, (250-45)).Select(i => new SelectListItem() { Text = string.Format("{0} cm", i), Value = string.Format("{0} cm", i) });
         }          
     }
 }

@@ -1,57 +1,87 @@
-﻿@model PagedList<FashionModeling.Models.GalleryDetailsModel>
-
-@{
+﻿@{
     ViewBag.Title = "Photo";
+    Layout = "~/Views/Shared/_ProfileLayout.cshtml";
 }
+<div class="section section-with-space">
+    <div class="text-center darken-grey-text mb-4">
+        <h1 class="font-bold mt-4 mb-3 h5">You can find your gallery</h1>
+        <a class="btn btn-danger btn-md" href="@Url.Action("AddPhoto","Profile")">Add More<i class="fa fa-plus pl-2"></i></a>
+    </div>
 
-<h2>Photo</h2>
+    <div class="container mt-4">
+        <!-- Grid row -->
+        <div class="row">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.FirstOrDefault().Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FirstOrDefault().Url)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FirstOrDefault().CreatedDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FirstOrDefault().ModifiedDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FirstOrDefault().IsActive)
-        </th>
-        <th></th>
-    </tr>
+            <!-- Grid column -->
+            <div class="col-lg-4 col-md-12 mb-5">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Url)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ModifiedDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsActive)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+                <div class="z-depth-1">
+                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/Food/6-col/img (59).jpg" class="img-fluid" alt="sample image">
+                </div>
 
-</table>
+            </div>
+            <!-- Grid column -->
+            <!-- Grid column -->
+            <div class="col-lg-4 col-md-6 mb-5">
+
+                <div class="z-depth-1-half">
+                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/Food/6-col/img (64).jpg" class="img-fluid" alt="sample image">
+                </div>
+
+            </div>
+            <!-- Grid column -->
+            <!-- Grid column -->
+            <div class="col-lg-4 col-md-6 mb-5">
+
+                <div class="z-depth-2">
+                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/Food/6-col/img (63).jpg" class="img-fluid" alt="sample image">
+                </div>
+
+            </div>
+            <!-- Grid column -->
+
+        </div>
+        <!-- Grid row -->
+        <!-- Grid row -->
+        <div class="row">
+
+            <!-- Grid column -->
+            <div class="col-lg-4 col-md-12 mb-5">
+
+                <div class="z-depth-3">
+                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/Food/6-col/img (62).jpg" class="img-fluid" alt="sample image">
+                </div>
+
+            </div>
+            <!-- Grid column -->
+            <!-- Grid column -->
+            <div class="col-lg-4 col-md-6 mb-5">
+
+                <div class="z-depth-4">
+                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/Food/6-col/img (61).jpg" class="img-fluid" alt="sample image">
+                </div>
+
+            </div>
+            <!-- Grid column -->
+            <!-- Grid column -->
+            <div class="col-lg-4 col-md-6 mb-5">
+
+                <div class="z-depth-5">
+                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/Food/6-col/img (60).jpg" class="img-fluid" alt="sample image">
+                </div>
+
+            </div>
+            <!-- Grid column -->
+
+        </div>
+        <!-- Grid row -->
+
+        <hr class="my-4">
+
+        <div class="text-center darken-grey-text mb-4">
+            <h3 class="font-bold mb-3">Here you can find more Shadows:</h3>
+            <a class="btn btn-danger" href="https://mdbootstrap.com/css/shadows/" target="_blank">Bootstrap Shadows</a>
+        </div>
+    </div>
+
+</div>

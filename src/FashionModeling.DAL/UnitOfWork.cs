@@ -94,6 +94,24 @@ namespace FashionModeling
         }
 
         #endregion
+
+        #region Profiles
+        private Repository<Profile> _profiles;
+        public Repository<Profile> ProfileRepo
+        {
+            get
+            {
+
+                if (this._profiles == null)
+                {
+                    this._profiles = new Repository<Profile>(context);
+                }
+                return _profiles;
+            }
+        }
+
+        #endregion
+
         #region Tags
         private Repository<Tags> _tags;
         public Repository<Tags> TagRepo

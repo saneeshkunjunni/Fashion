@@ -13,6 +13,7 @@ namespace FashionModeling.DAL.Entity
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public long Id { get; set; }
+        [StringLength(255)]
         public string EmailAddress { get; set; }
         public DateTime CreatedUTCDate { get; set; } = DateTime.UtcNow;
         public DateTime ModifiedUTCDate { get; set; } = DateTime.UtcNow;

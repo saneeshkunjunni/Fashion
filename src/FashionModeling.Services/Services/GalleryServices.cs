@@ -19,8 +19,8 @@ namespace FashionModeling.Services.Services
                 var result = new Gallery()
                 {
                     Description = model.Description,
-                    IsActive = true,
-                    IsImage = model.IsImage,
+                    IsActive = false,
+                    IsImage = !model.IsVideo,
                     Url = model.Url,
                 };
                 unitOfwork.GalleriesRepo.Insert(result);

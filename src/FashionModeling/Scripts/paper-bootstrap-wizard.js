@@ -105,7 +105,7 @@ transparent = true;
 
 
                 // Prepare the preview for profile picture
-                $("#wizard-picture").change(function(){
+                $("#ProfilePics").change(function(){
                     readURL(this);
                 });
 

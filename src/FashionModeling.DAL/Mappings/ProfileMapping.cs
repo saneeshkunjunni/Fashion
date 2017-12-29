@@ -18,6 +18,7 @@ namespace FashionModeling.DAL.Mappings
             this.Property(x => x.AddressId);
             this.Property(x => x.CategoryId);
             this.Property(x => x.CreatedUTCDate);
+            this.Property(x => x.DateOfBirth);
             this.Property(x => x.Ethnicity);
             this.Property(x => x.Experience);
             this.Property(x => x.EyeColor);
@@ -43,8 +44,8 @@ namespace FashionModeling.DAL.Mappings
             this.Property(x => x.SpecialFeatures);
             this.Property(x => x.Status);
             this.Property(x => x.TshirtSize);
-            this.Property(x => x.WaistSise);       
-            
+            this.Property(x => x.WaistSise);
+            this.Property(x => x.WhatsAppNumber);
         }
     }
 }

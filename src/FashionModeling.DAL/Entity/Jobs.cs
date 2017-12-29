@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,14 +9,18 @@ namespace FashionModeling.DAL.Entity
 {
     public class Jobs: MetaEntity
     {
+        [StringLength(255)]
         public string JobTitle { get; set; }       
         public Guid ShootingAddressId { get; set; }
-        public DateTime ShootingDateUTC { get; set; }         
+        public DateTime ShootingDateUTC { get; set; }
+        [StringLength(25)]
         public string ContactNumbers { get; set; }
+        [StringLength(512)]
         public string ContactEmail { get; set; }
         public DateTime CastingFromDateUtc { get; set; }
         public DateTime CastingToDateUtc { get; set; }
         public DateTime CastingExpiryDateUtc { get; set; }
+        [StringLength(512)]
         public string Description { get; set; }
 
         public virtual Address Address { get; set; }

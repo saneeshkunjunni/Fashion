@@ -17,7 +17,7 @@ namespace FashionModeling.DAL.Entity
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
             // Add custom user claims here
             return userIdentity;
-        }
+        }        
         public DateTime CreateDateUTC { get; set; } = DateTime.UtcNow;
         public virtual ICollection<Gallery> Galleries { get; set; }
         public virtual ICollection<Tags> Tags { get; set; }

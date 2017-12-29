@@ -26,16 +26,18 @@ namespace FashionModeling.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
         private IDropdownServices _dropdownServices;
+        private IProfileServices _profileServices;
 
         public AccountController()
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, IDropdownServices dropdownServices)
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, IDropdownServices dropdownServices, IProfileServices profileServices)
         {
             UserManager = userManager;
             SignInManager = signInManager;
             _dropdownServices = dropdownServices;
+            _profileServices = profileServices;
         }
 
         public ApplicationSignInManager SignInManager
@@ -204,67 +206,9 @@ namespace FashionModeling.Controllers
             return View(model);
         }
         [AllowAnonymous]
-        [HttpPost]
-        public ActionResult UploadFile()
-        {
-            HttpPostedFileBase myFile = Request.Files["MyFile"];
-            bool isUploaded = false;
-
-            string tempFolderName = ConfigurationManager.AppSettings["Image.TempFolderName"];
-
-            if (myFile != null && myFile.ContentLength != 0)
-            {
-                string tempFolderPath = Server.MapPath("~/" + tempFolderName);
-
-                if (FileHelper.CreateFolderIfNeeded(tempFolderPath))
-                {
-                    try
-                    {
-                        myFile.SaveAs(Path.Combine(tempFolderPath, myFile.FileName));
-                        isUploaded = true;
-                    }
-                    catch (Exception) {  /*TODO: You must process this exception.*/}
-                }
-            }
-
-            string filePath = string.Concat("/", tempFolderName, "/", myFile.FileName);
-            return Json(new { isUploaded, filePath }, "text/html");
-        }
-
-        [AllowAnonymous]
-        [HttpPost]
-        public ActionResult CropImage(string imagePath,int? cropPointX,int? cropPointY,int? imageCropWidth,int? imageCropHeight)
-        {
-            if (string.IsNullOrEmpty(imagePath) || !cropPointX.HasValue || !cropPointY.HasValue || !imageCropWidth.HasValue || !imageCropHeight.HasValue)
-            {
-                return new HttpStatusCodeResult((int)HttpStatusCode.BadRequest);
-            }
-
-            byte[] imageBytes = System.IO.File.ReadAllBytes(Server.MapPath(imagePath));
-            byte[] croppedImage = ImageHelper.CropImage(imageBytes, cropPointX.Value, cropPointY.Value, imageCropWidth.Value, imageCropHeight.Value);
-
-            string tempFolderName = Server.MapPath("~/" + ConfigurationManager.AppSettings["Image.TempFolderName"]);
-
-            string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(imagePath);
-            string fileName = Path.GetFileName(imagePath).Replace(fileNameWithoutExtension, fileNameWithoutExtension + "_cropped");
-
-            try
-            {
-                FileHelper.SaveFile(croppedImage, Path.Combine(tempFolderName, fileName));
-            }
-            catch (Exception)
-            {
-                //Log an error     
-                return new HttpStatusCodeResult((int)HttpStatusCode.InternalServerError);
-            }
-
-            string photoPath = string.Concat("/", ConfigurationManager.AppSettings["Image.TempFolderName"], "/", fileName);
-            return Json(new { photoPath = photoPath }, JsonRequestBehavior.AllowGet);
-        }
-        [AllowAnonymous]
         public ActionResult CreateProfile()
         {
-            ProfileViewModel model = new ProfileViewModel();
+            ProfileRegisterModel model = new ProfileRegisterModel();
 
             model.CategoryList.AddRange(_dropdownServices.GetCategories());
             model.ChestSizeList.AddRange(_dropdownServices.GetChestSize());
@@ -293,38 +237,31 @@ namespace FashionModeling.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> CreateProfile(ProfileViewModel model)
+        public async Task<ActionResult> CreateProfile(ProfileRegisterModel model)
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email,PhoneNumber = model.MobileNumber};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
-                {
-                    var admins = ConfigurationManager.AppSettings["admins"];
-                    if (admins.Split(',').Contains(model.Email.ToLower()))
-                    {
-                        var RoleManagers = new RoleManager<IdentityRole>(
-                  new RoleStore<IdentityRole>(new ApplicationDbContext()));
-                        if (!RoleManagers.RoleExists("Admin"))
-                        {
-                            var roleresults = RoleManagers.Create(new IdentityRole("Admin"));
-                        }
-                        var role = await UserManager.IsInRoleAsync(user.Id, "Admin");
-                        if (!role)
-                        {
-                            //user don't have exhibitor role. add role
-                            var roleresult = UserManager.AddToRole(user.Id, "Admin");
-                        }
-                    }
-
+                {  
+                   
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                    if (FileHelper.SaveProfileImage(model.ProfilePics, user.Id))
+                    {
+                        model.ProfilePicsLocation = FileHelper.ProfileImage(user.Id, model.ProfilePics.FileName);
+                    }
+                    var profileId = _profileServices.AddProfile(model,user.Id);
 
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    if (string.IsNullOrWhiteSpace(profileId))
+                    {
+                        return RedirectToAction("UpdateProfile", "Profile");
+                    }
                     return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);

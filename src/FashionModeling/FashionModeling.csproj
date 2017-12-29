@@ -304,8 +304,11 @@
     <Content Include="Content\tether\tether.css" />
     <Content Include="Content\tether\tether.min.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Images\Profiles\defaultProfile.jpg" />
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\chosen.jquery.js" />
     <Content Include="Scripts\chosen.jquery.min.js" />
     <Content Include="Scripts\chosen.proto.js" />
@@ -1910,7 +1913,6 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Profile\EditPhoto.cshtml" />
-    <Content Include="Views\Profile\AddPhoto.cshtml" />
     <Content Include="Views\Profile\Photo.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
@@ -1947,10 +1949,14 @@
     <Content Include="Views\Admin\AddCommon.cshtml" />
     <Content Include="Views\Admin\EditCommon.cshtml" />
     <Content Include="Views\Admin\CommonDetails.cshtml" />
+    <Content Include="Views\Profile\_photolist.cshtml" />
+    <Content Include="Views\Profile\AddPhoto.cshtml" />
+    <Content Include="Views\Profile\AddVideo.cshtml" />
+    <Content Include="Views\Admin\_joblist.cshtml" />
+    <Content Include="Views\Admin\JobDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Images\Profiles\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

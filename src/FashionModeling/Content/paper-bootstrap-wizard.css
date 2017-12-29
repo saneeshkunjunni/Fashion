@@ -1342,8 +1342,8 @@ a {
             border-color: #2ca8ff;
         }
 
-    .wizard-card .picture-src {
-        width: 100%;
+    .wizard-card .picture-src {        
+        height: 100%;
     }
 
     .wizard-card[data-color="azure"] .picture:hover {

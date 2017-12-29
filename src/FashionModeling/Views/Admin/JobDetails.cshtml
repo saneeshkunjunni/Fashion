@@ -1,0 +1,219 @@
+﻿@model FashionModeling.Models.JobDetailsModel
+
+@{
+    ViewBag.Title = "Job Details"; 
+    ViewBag.Page = "Job";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+} 
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            @ViewBag.Title
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="@Url.Action(ViewBag.Page,"Admin")"><i class="fa fa-dashboard"></i> @ViewBag.Page</a></li>
+            <li class="active">@ViewBag.Title </li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">@ViewBag.Title</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-12" id="listdetails">
+
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.JobTitle)
+                                        </th>
+
+                                        <td>
+                                            @Html.DisplayFor(model => model.JobTitle)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.IsNewShootingAddress)
+                                        </th>
+                                        <td>
+                                            @Html.DisplayFor(model => model.IsNewShootingAddress)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.ShootingAddressId)
+                                        </th>
+                                        <td>
+                                            @Html.DisplayFor(model => model.ShootingAddressId)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.ShootingDateUTC)
+                                        </th>
+                                        <td>
+                                            @Html.DisplayFor(model => model.ShootingDateUTC)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.ContactNumbers)
+                                        </th>
+                                        <td>
+                                            @Html.DisplayFor(model => model.ContactNumbers)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.ContactEmail)
+                                        </th>
+                                        <td>
+                                            @Html.DisplayFor(model => model.ContactEmail)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.CastingFromDateUtc)
+                                        </th>
+                                        <td>
+                                            @Html.DisplayFor(model => model.CastingFromDateUtc)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.CastingToDateUtc)
+                                        </th>
+                                        <td>
+                                            @Html.DisplayFor(model => model.CastingToDateUtc)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.CastingExpiryDateUtc)
+                                        </th>
+                                        <td>
+                                            @Html.DisplayFor(model => model.CastingExpiryDateUtc)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Description)
+                                        </th>
+                                        <td>
+                                            @Html.DisplayFor(model => model.Description)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.UserId)
+                                        </th>
+                                        <td>
+                                            @Html.DisplayFor(model => model.UserId)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.AddressLine1)
+                                        </th>
+                                        <td>
+                                            @Html.DisplayFor(model => model.AddressLine1)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.AddressLine2)
+                                        </th>
+                                        <td>
+                                            @Html.DisplayFor(model => model.AddressLine2)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.AddressMap)
+                                        </th>
+                                        <td>
+                                            @Html.DisplayFor(model => model.AddressMap)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.AreaCode)
+                                        </th>
+                                        <td>
+                                            @Html.DisplayFor(model => model.AreaCode)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.State)
+                                        </th>
+                                        <td>
+                                            @Html.DisplayFor(model => model.State)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Suburb)
+                                        </th>
+                                        <td>
+                                            @Html.DisplayFor(model => model.Suburb)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.JobId)
+                                        </th>
+                                        <td>
+                                            @Html.DisplayFor(model => model.JobId)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.ModifiedBy)
+                                        </th>
+                                        <td>
+                                            @Html.DisplayFor(model => model.ModifiedBy)
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- ./box-body -->
+                    <div class="box-footer">
+                        <div class="row">
+                            <div class="col-sm-3 col-xs-6">
+                                @using (Html.BeginForm("DeleteJob", "Admin", FormMethod.Post))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    @Html.Hidden("id", Model.JobId)
+                                    <button type="submit" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete this Job</button>
+                                }       <!-- /.description-block -->
+                            </div>
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- /.box-footer -->
+                </div>
+                <!-- /.box -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

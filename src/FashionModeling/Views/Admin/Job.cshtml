@@ -1,10 +1,9 @@
-﻿
+﻿@model FashionModeling.Models.JobListModel
 @{
     ViewBag.Title = "Job";
     ViewBag.Page = "Job";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -21,8 +20,65 @@
 
     <!-- Main content -->
     <section class="content">
-        <!-- Info boxes -->
         <div class="row">
+            <div class="col-md-12">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">@ViewBag.Title</h3>
+                        <div class="box-tools pull-right">
+                            <a href="@Url.Action("AddJob","Admin")" class="btn btn-default"><i class="fa fa-plus"></i> Add New</a>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-12" id="listdetails">
+                                @Html.Partial("~/Views/Admin/_joblist.cshtml", Model.Jobslist)
+                            </div>
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- ./box-body -->
+                    <div class="box-footer">
+                        <div class="row">
+                            <div class="col-sm-3 col-xs-6">
+                                <ul class="pagination pagination-sm inline">
+                                    @if (@Model.Jobslist.HasPreviousPage)
+                                    {
+                                        <li><a href="@Url.Action("Job","Admin",routeValues:new {page =Model.Jobslist.FirstPage,pageSize = Model.Jobslist.PageSize })">«</a></li>
+                                        <li><a href="@Url.Action("Job","Admin",routeValues:new {page =Model.Jobslist.PageIndex-1,pageSize = Model.Jobslist.PageSize })">@(Model.Jobslist.PageIndex - 1)</a></li>
+                                    }
+                                    @if (@Model.Jobslist.Count > 0)
+                                    {
+                                        <li><a href="#">@Model.Jobslist.PageIndex</a></li>
+                                    }
+                                    @if (@Model.Jobslist.HasNextPage)
+                                    {
+                                        <li><a href="@Url.Action("Job","Admin",routeValues:new {page =Model.Jobslist.PageIndex+1,pageSize = Model.Jobslist.PageSize })">@(Model.Jobslist.PageIndex + 1)</a></li>
+                                        <li><a href="@Url.Action("Job",routeValues:new {page =Model.Jobslist.LastPage,pageSize = Model.Jobslist.PageSize })">»</a></li>
+                                    }
+                                </ul>
+                            </div>
+                            <div class="col-sm-3 col-xs-6">
+                                @*<a href="@Url.Action("AddJob","Admin")" class="btn btn-default"><i class="fa fa-plus"></i> Add New</a>*@
+                                <!-- /.description-block -->
+                            </div>
+                            <div class="col-sm-3 col-xs-6">
+                            </div>
+                            <div class="col-sm-3 col-xs-6">
+                            </div>
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- /.box-footer -->
+                </div>
+                <!-- /.box -->
+            </div>
+            <!-- /.col -->
         </div>
+        <!-- /.row -->
+
     </section>
+    <!-- /.content -->
 </div>
+<!-- /.content-wrapper -->

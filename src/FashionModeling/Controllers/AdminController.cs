@@ -119,9 +119,92 @@ namespace FashionModeling.Controllers
         #endregion
 
         #region Job
-        public ActionResult Job()
+        public ActionResult _joblist(int page = 1, int pageSize = 20, string filter = null)
+        {
+            return View(addressServices.GetAddress(page, pageSize, filter));
+        }
+
+        public ActionResult AddJob()
         {
             return View();
+        }
+        [HttpPost]
+        public ActionResult AddJob(AddressRegisterModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                if (addressServices.AddAddress(model) != Guid.Empty)
+                {
+                    return Redirect("Job");
+                }
+                return HttpNotFound();
+            }
+            else
+            {
+                return View(model);
+            }
+        }
+        public ActionResult EditJob(string id)
+        {
+            Guid addressId = Guid.Empty;
+            if (Guid.TryParse(id, out addressId))
+            {
+                return View(addressServices.GetAddressEdit(addressId));
+            }
+            return HttpNotFound();
+        }
+        [HttpPost]
+        public ActionResult EditJob(AddressEditModel model)
+        {
+
+            if (ModelState.IsValid)
+            {
+                if (addressServices.EditAddress(model))
+                {
+                    return RedirectToAction("Job");
+                }
+                return HttpNotFound();
+            }
+            else
+            {
+                return View(model);
+            }
+        }
+        public ActionResult JobDetails(string id)
+        {
+            Guid addressId = Guid.Empty;
+            if (Guid.TryParse(id, out addressId))
+            {
+                return View(addressServices.GetAddressDetails(addressId));
+            }
+            return HttpNotFound();
+        }
+        [HttpPost]
+        public ActionResult DeleteJob(string id)
+        {
+            Guid addressId = Guid.Empty;
+            if (Guid.TryParse(id, out addressId))
+            {
+                var result = addressServices.DeleteAddress(addressId);
+                if (result && Request.IsAjaxRequest())
+                {
+                    return Json(true, JsonRequestBehavior.AllowGet);
+                }
+                else if (result)
+                {
+                    return RedirectToAction("Job");
+                }
+                else if (Request.IsAjaxRequest())
+                {
+
+                    return Json(false, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    return RedirectToAction("Job");
+                }
+            }
+            return HttpNotFound();
         }
         #endregion
 

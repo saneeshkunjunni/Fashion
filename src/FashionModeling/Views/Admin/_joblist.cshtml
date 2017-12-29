@@ -1,0 +1,136 @@
+﻿@model PagedList<FashionModeling.Models.JobDetailsModel>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().JobId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().JobTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().IsNewShootingAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().ShootingAddressId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().ShootingDateUTC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().ContactNumbers)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().ContactEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().CastingFromDateUtc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().CastingToDateUtc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().CastingExpiryDateUtc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().UserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().AddressLine1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().AddressLine2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().AddressMap)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().AreaCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().State)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Suburb)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().ModifiedBy)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Select((value, index) => new { value, index }))
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.index)
+        </td>
+        <td>
+            <a href="@Url.Action("JobDetails","Admin",routeValues: new { id= item.value.JobId})">
+                @Html.DisplayFor(modelItem => item.value.JobTitle)
+            </a> 
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.value.IsNewShootingAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.value.ShootingAddressId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.value.ShootingDateUTC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.value.ContactNumbers)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.value.ContactEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.value.CastingFromDateUtc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.value.CastingToDateUtc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.value.CastingExpiryDateUtc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.value.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.value.UserId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.value.AddressLine1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.value.AddressLine2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.value.AddressMap)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.value.AreaCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.value.State)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.value.Suburb)
+        </td>       
+        <td>
+            @Html.DisplayFor(modelItem => item.value.ModifiedBy)
+        </td>
+        <td>
+            <a href="@Url.Action("EditJob","Admin",routeValues: new {  id=item.value.JobId })"><i class="fa fa-edit"></i></a>
+        </td>
+    </tr>
+    }
+
+</table>

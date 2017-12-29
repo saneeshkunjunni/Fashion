@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace FashionModeling.Models
 {
@@ -12,10 +13,13 @@ namespace FashionModeling.Models
     {
         [Required, Display(Name = "Description", Prompt = "Description")]
         public string Description { get; set; }
-        [Required, Display(Name = "Upload", Prompt = "Upload")]
+        [RequiredIf("IsVideo", false), Display(Name = "Upload", Prompt = "Upload")]
+        public HttpPostedFileBase ImageFile { get; set; }
+        [RequiredIf("IsVideo", true), Display(Name = "Video Url", Prompt = "Video Url")]
         public string Url { get; set; }
-        public bool IsImage{ get; set; }
-        public bool IsActive { get; set; }
+        public bool IsVideo{ get; set; } 
+        [Required]
+        public string ProfileId { get; set; }
     }
     public class GalleryEditModel
     {

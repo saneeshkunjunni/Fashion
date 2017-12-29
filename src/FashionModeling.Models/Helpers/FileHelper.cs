@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Hosting;
 
 namespace FashionModeling.Models.Helpers
@@ -50,6 +52,67 @@ namespace FashionModeling.Models.Helpers
                 }
             }
             return result;
+        }
+
+        public static string ServerImagePath
+        {
+            get
+            {
+                try
+                {
+                    var path = ConfigurationManager.AppSettings["ImagePath"].ToString();
+                    if (Directory.Exists(path))
+                    {
+                        return path;
+                    }
+                    return null;
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+        public static string DefaultProfileImage { get { return System.Web.HttpContext.Current.Server.MapPath("~/Image/Profiles/defaultProfile.jpg"); } }
+        public static string ProfileImage(string profileId, string imageName = null)
+        {
+            string path = "";
+            if (string.IsNullOrWhiteSpace(ServerImagePath))
+            {
+                path = System.Web.HttpContext.Current.Server.MapPath("~/Image/Profiles/");
+                path = Path.Combine(path, profileId);
+            }
+            else
+            {
+                path = ServerImagePath;
+                path = Path.Combine(path, profileId);
+            }
+            if (!string.IsNullOrWhiteSpace(imageName))
+            {
+                path = Path.Combine(path, imageName);
+                path = File.Exists(path) ? path : DefaultProfileImage;
+            }
+            return path;
+
+        }
+        public static bool SaveProfileImage(HttpPostedFileBase myFile,string profileId)
+        {
+            if (myFile != null && myFile.ContentLength != 0)
+            {
+                var folderPath = ProfileImage(profileId);
+                if (FileHelper.CreateFolderIfNeeded(folderPath))
+                {
+                    try
+                    {
+                        myFile.SaveAs(Path.Combine(folderPath, myFile.FileName));
+                        return true;
+                    }
+                    catch (Exception) {
+                        return false;
+                    }
+                }
+            }
+            return false;
         }
     }
 }
