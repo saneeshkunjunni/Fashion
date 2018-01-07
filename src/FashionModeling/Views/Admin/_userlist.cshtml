@@ -1,0 +1,59 @@
+﻿@model PagedList<FashionModeling.Models.UserDetailsModel>
+ 
+<table class="table">
+    <tr>
+        <th>
+            SL No
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().UseId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().EmailId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().WhatsAppNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().IsProfileUser)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Select((value, index) => new { value, index }))
+    { 
+    <tr>
+        <td>
+            @(item.index + (Model.PageSize * (Model.PageIndex - 1)) + 1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.value.UseId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.value.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.value.EmailId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.value.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.value.WhatsAppNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.value.IsProfileUser)
+        </td>
+        <td>
+            @Html.ActionLink("RemoveUsers", "Delete", new {  id=item.value.UseId })
+        </td>
+    </tr>
+    }
+
+</table>

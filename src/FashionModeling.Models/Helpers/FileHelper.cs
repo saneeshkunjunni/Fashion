@@ -73,13 +73,13 @@ namespace FashionModeling.Models.Helpers
                 }
             }
         }
-        public static string DefaultProfileImage { get { return System.Web.HttpContext.Current.Server.MapPath("~/Image/Profiles/defaultProfile.jpg"); } }
+        public static string DefaultProfileImage { get { return System.Web.HttpContext.Current.Server.MapPath("~/Images/Profiles/defaultProfile.jpg"); } }
         public static string ProfileImage(string profileId, string imageName = null)
         {
             string path = "";
             if (string.IsNullOrWhiteSpace(ServerImagePath))
             {
-                path = System.Web.HttpContext.Current.Server.MapPath("~/Image/Profiles/");
+                path = System.Web.HttpContext.Current.Server.MapPath("~/Images/Profiles/");
                 path = Path.Combine(path, profileId);
             }
             else

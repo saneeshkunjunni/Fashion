@@ -1,8 +1,14 @@
 ﻿using FashionModeling.Models;
+using FashionModeling.Models.Helpers;
 using FashionModeling.Services.Interfaces;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -15,12 +21,27 @@ namespace FashionModeling.Controllers
         private readonly IAddressServices addressServices;
         private readonly ITagServices tagServices;
         private readonly ICommonServices commonServices;
-        public AdminController(IJobServices jobServices,IAddressServices addressServices, ITagServices tagServices, ICommonServices commonServices)
+        private readonly IDropdownServices dropdownServices;
+        private ApplicationUserManager userManager;
+        public AdminController(ApplicationUserManager userManager, IDropdownServices dropdownServices, IJobServices jobServices,IAddressServices addressServices, ITagServices tagServices, ICommonServices commonServices)
         {
             this.jobServices = jobServices;
             this.addressServices = addressServices;
             this.tagServices = tagServices;
             this.commonServices = commonServices;
+            this.dropdownServices = dropdownServices;
+            this.userManager = userManager;
+        }
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                userManager = value;
+            }
         }
         // GET: Admin
         public ActionResult Index()
@@ -119,63 +140,177 @@ namespace FashionModeling.Controllers
         #endregion
 
         #region Job
-        public ActionResult _joblist(int page = 1, int pageSize = 20, string filter = null)
+        public ActionResult Job(int page = 1, int pageSize = 20, string filter = null)
         {
-            return View(addressServices.GetAddress(page, pageSize, filter));
+            return View(jobServices.GetJob(page, pageSize, filter));
         }
 
         public ActionResult AddJob()
         {
-            return View();
+            var model = new JobRegisterModel();
+            model.AddressList.AddRange(dropdownServices.GetAddress());
+            return View(model);
         }
         [HttpPost]
-        public ActionResult AddJob(AddressRegisterModel model)
+        public ActionResult AddJob(JobRegisterModel model)
         {
             if (ModelState.IsValid)
             {
-                if (addressServices.AddAddress(model) != Guid.Empty)
+                return RedirectToAction("FinalJob", model);
+                //model.UserId = User.Identity.GetUserId();
+                //if (jobServices.AddJob(model) != Guid.Empty)
+                //{
+                //    return Redirect("Job");
+                //} 
+            }
+            model.AddressList.AddRange(dropdownServices.GetAddress());
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult CropJobImage(
+            string imagePath,
+            int? cropPointX,
+            int? cropPointY,
+            int? imageCropWidth,
+            int? imageCropHeight)
+        {
+            if (string.IsNullOrEmpty(imagePath)
+                || !cropPointX.HasValue
+                || !cropPointY.HasValue
+                || !imageCropWidth.HasValue
+                || !imageCropHeight.HasValue)
+            {
+                return new HttpStatusCodeResult((int)HttpStatusCode.BadRequest);
+            }
+
+            byte[] imageBytes = System.IO.File.ReadAllBytes(Server.MapPath(imagePath));
+            byte[] croppedImage = ImageHelper.CropImage(imageBytes, cropPointX.Value, cropPointY.Value, imageCropWidth.Value, imageCropHeight.Value);
+
+            string tempFolderName = Server.MapPath("~/" + System.Configuration.ConfigurationManager.AppSettings["Image.TempFolderName"]);
+
+            string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(imagePath);
+            string fileName = Path.GetFileName(imagePath).Replace(fileNameWithoutExtension, fileNameWithoutExtension + "_cropped");
+
+            try
+            {
+                FileHelper.SaveFile(croppedImage, Path.Combine(tempFolderName, fileName));
+            }
+            catch (Exception)
+            {
+                //Log an error     
+                return new HttpStatusCodeResult((int)HttpStatusCode.InternalServerError);
+            }
+
+            string photoPath = string.Concat("/", System.Configuration.ConfigurationManager.AppSettings["Image.TempFolderName"], "/", fileName);
+            return Json(new { photoPath = photoPath }, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public ActionResult JobImage()
+        {
+            HttpPostedFileBase myFile = Request.Files["ImageFile"];
+            bool isUploaded = false;
+
+            string tempFolderName = System.Configuration.ConfigurationManager.AppSettings["Image.TempFolderName"];
+
+            if (myFile != null && myFile.ContentLength != 0)
+            {
+                string tempFolderPath = Server.MapPath("~/" + tempFolderName);
+
+                if (FileHelper.CreateFolderIfNeeded(tempFolderPath))
+                {
+                    try
+                    {
+                        myFile.SaveAs(Path.Combine(tempFolderPath, myFile.FileName));
+                        isUploaded = true;
+                    }
+                    catch (Exception) {  /*TODO: You must process this exception.*/}
+                }
+            }
+
+            string filePath = string.Concat("/", tempFolderName, "/", myFile.FileName);
+            return Json(new { isUploaded, filePath }, "text/html");
+
+        }
+        public ActionResult FinalJob(JobRegisterModel model)
+        {
+            var rolemodel = new JobRegisterWithRole()
+            {
+                CastingExpiryDateUtc = model.CastingExpiryDateUtc,
+                CastingFromDateUtc = model.CastingFromDateUtc,
+                CastingToDateUtc = model.CastingToDateUtc,
+                ContactEmail = model.ContactEmail,
+                ContactNumbers = model.ContactNumbers,
+                Description = model.Description,
+                JobTitle = model.JobTitle,
+                NumberOfRoles = model.NumberOfRoles,
+                ShootingAddressId = model.ShootingAddressId,
+                ShootingDateUTC = model.ShootingDateUTC,
+            }; 
+            var item = new JobRoleRegisterModel();
+            item.CountryList.AddRange(dropdownServices.GetNationalities());
+            item.ProfessionList.AddRange(dropdownServices.GetTags());
+            item.GenderList.AddRange(dropdownServices.GetGenders());
+            for (int i = 0; i < model.NumberOfRoles; i++)
+            {   
+                rolemodel.JobRoles.Add(item);
+            }
+            
+            return View(rolemodel);
+        }
+        [HttpPost]
+        public ActionResult FinalJob(JobRegisterWithRole model)
+        {
+            if (ModelState.IsValid)
+            {
+                model.UserId = User.Identity.GetUserId();
+                if (jobServices.AddJob(model) != Guid.Empty)
                 {
                     return Redirect("Job");
                 }
-                return HttpNotFound();
+                return RedirectToAction("AddJob");
             }
-            else
+            foreach (var item in model.JobRoles)
             {
-                return View(model);
+                item.CountryList.AddRange(dropdownServices.GetNationalities());
+                item.ProfessionList.AddRange(dropdownServices.GetTags());
+                item.GenderList.AddRange(dropdownServices.GetGenders());
             }
+            return View(model);
         }
         public ActionResult EditJob(string id)
         {
             Guid addressId = Guid.Empty;
             if (Guid.TryParse(id, out addressId))
             {
-                return View(addressServices.GetAddressEdit(addressId));
+                var model = jobServices.GetJobEdit(addressId);
+                model.AddressList.AddRange(dropdownServices.GetAddress());
+                return View();
             }
             return HttpNotFound();
         }
         [HttpPost]
-        public ActionResult EditJob(AddressEditModel model)
+        public ActionResult EditJob(JobEditModel model)
         {
 
             if (ModelState.IsValid)
             {
-                if (addressServices.EditAddress(model))
-                {
+                model.UserId = User.Identity.GetUserId();
+                if (jobServices.EditJob(model))
+                { 
                     return RedirectToAction("Job");
                 }
                 return HttpNotFound();
             }
-            else
-            {
-                return View(model);
-            }
+            model.AddressList.AddRange(dropdownServices.GetAddress());
+            return View(model);
+            
         }
         public ActionResult JobDetails(string id)
         {
             Guid addressId = Guid.Empty;
             if (Guid.TryParse(id, out addressId))
             {
-                return View(addressServices.GetAddressDetails(addressId));
+                return View(jobServices.GetJobDetails(addressId));
             }
             return HttpNotFound();
         }
@@ -185,7 +320,7 @@ namespace FashionModeling.Controllers
             Guid addressId = Guid.Empty;
             if (Guid.TryParse(id, out addressId))
             {
-                var result = addressServices.DeleteAddress(addressId);
+                var result = jobServices.DeleteJob(addressId);
                 if (result && Request.IsAjaxRequest())
                 {
                     return Json(true, JsonRequestBehavior.AllowGet);
@@ -319,6 +454,7 @@ namespace FashionModeling.Controllers
             return HttpNotFound();
         }
         #endregion
+
         #region Common 
         public ActionResult Common(string type,int page = 1, int pageSize = 20, string filter = null)
         {
@@ -413,10 +549,36 @@ namespace FashionModeling.Controllers
         #endregion
 
         #region Users
-        public ActionResult Users()
+        public ActionResult Users(int page = 1, int pageSize = 20, string filter = null)
         {
-            return View();
+            var users = userManager.Users.Select(x=> new UserDetailsModel()
+            {
+                EmailId = x.Email,
+                UserName = x.UserName,
+                WhatsAppNumber = x.Profile != null ? x.Profile.WhatsAppNumber : "",
+                IsProfileUser = x.Profile != null,
+                Phone =x.PhoneNumber,
+                UseId=x.Id,
+            }).OrderBy(x=>x.UserName).ToPagedList(page,pageSize);
+            return View(new UserListModel() { Userlist = users });
         }
+        [HttpPost]
+        public async Task<ActionResult> RemoveUsers(string id)
+        {
+            Guid TagsId = Guid.Empty;
+            if (Guid.TryParse(id, out TagsId))
+            {
+                // id is id of the user to be deleted.
+                var user = await userManager.FindByIdAsync(id); //use async find
+                if (user != null)
+                {
+                    var result = await userManager.DeleteAsync(user);
+                    return Json(result.Succeeded);
+                }
+                return Json(false);
+            }
+            return HttpNotFound();
+        }       
         #endregion
     }
 }

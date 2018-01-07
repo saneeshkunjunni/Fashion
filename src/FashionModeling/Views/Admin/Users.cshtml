@@ -1,4 +1,4 @@
-﻿
+﻿@model FashionModeling.Models.UserListModel
 @{
     ViewBag.Title = "Users";
     ViewBag.Page = "Users";
@@ -20,10 +20,62 @@
 
     <!-- Main content -->
     <section class="content">
-        <!-- Info boxes -->
         <div class="row">
+            <div class="col-md-12">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">@ViewBag.Title</h3>                      
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-12" id="listdetails">
+                                @Html.Partial("~/Views/Admin/_userlist.cshtml", Model.Userlist)
+                            </div>
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- ./box-body -->
+                    <div class="box-footer">
+                        <div class="row">
+                            <div class="col-sm-3 col-xs-6">
+                                <ul class="pagination pagination-sm inline">
+                                    @if (@Model.Userlist.HasPreviousPage)
+                                    {
+                                        <li><a href="@Url.Action("Users","Admin",routeValues:new {page =Model.Userlist.FirstPage,pageSize = Model.Userlist.PageSize })">«</a></li>
+                                        <li><a href="@Url.Action("Users","Admin",routeValues:new {page =Model.Userlist.PageIndex-1,pageSize = Model.Userlist.PageSize })">@(Model.Userlist.PageIndex - 1)</a></li>
+                                    }
+                                    @if (@Model.Userlist.Count > 0)
+                                    {
+                                        <li><a href="#">@Model.Userlist.PageIndex</a></li>
+                                    }
+                                    @if (@Model.Userlist.HasNextPage)
+                                    {
+                                        <li><a href="@Url.Action("Users","Admin",routeValues:new {page =Model.Userlist.PageIndex+1,pageSize = Model.Userlist.PageSize })">@(Model.Userlist.PageIndex + 1)</a></li>
+                                        <li><a href="@Url.Action("Users",routeValues:new {page =Model.Userlist.LastPage,pageSize = Model.Userlist.PageSize })">»</a></li>
+                                    }
+                                </ul>
+                            </div>
+                            <div class="col-sm-3 col-xs-6">
+                                @*<a href="@Url.Action("AddUser","Admin")" class="btn btn-default"><i class="fa fa-plus"></i> Add New</a>*@
+                                <!-- /.description-block -->
+                            </div>
+                            <div class="col-sm-3 col-xs-6">
+                            </div>
+                            <div class="col-sm-3 col-xs-6">
+                            </div>
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- /.box-footer -->
+                </div>
+                <!-- /.box -->
+            </div>
+            <!-- /.col -->
         </div>
+        <!-- /.row -->
+
     </section>
+    <!-- /.content -->
 </div>
-
-
+<!-- /.content-wrapper -->

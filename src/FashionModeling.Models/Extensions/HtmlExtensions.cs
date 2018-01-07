@@ -40,8 +40,8 @@ public static class HtmlExtensions
         }
         TagBuilder tag = new TagBuilder("label");
         tag.Attributes.Add("for",TagBuilder.CreateSanitizedId(html.ViewContext.ViewData.TemplateInfo.GetFullHtmlFieldName(htmlFieldName)));
-        if (isRequired)
-            tag.Attributes.Add("class", "label-required");
+        //if (isRequired)
+        //    tag.Attributes.Add("class", "label-required");
         tag.SetInnerText(labelText);
         if (htmlAttributes != null)
         {
@@ -50,15 +50,15 @@ public static class HtmlExtensions
             {
                 tag.MergeAttribute(customAttribute.Key.ToString(), customAttribute.Value.ToString());
             }
-        }
-        var output = tag.ToString(TagRenderMode.Normal);        
+        }       
         if (isRequired)
         {
             var asteriskTag = new TagBuilder("span");
             asteriskTag.Attributes.Add("class", "required");
             asteriskTag.SetInnerText("*");
-            output += asteriskTag.ToString(TagRenderMode.Normal);
+            tag.InnerHtml += asteriskTag.ToString(TagRenderMode.Normal);
         }
+        var output = tag.ToString(TagRenderMode.Normal);
         return MvcHtmlString.Create(output);
     }
 }

@@ -23,10 +23,12 @@ namespace FashionModeling.DAL.Mappings
             this.Property(x => x.CreatedUTCDate).IsRequired();
             this.Property(x => x.Description).IsRequired();
             this.Property(x => x.JobTitle).IsRequired();
+            this.Property(x => x.JobUrl).IsRequired();
             this.Property(x => x.ModifiedBy).IsOptional();
             this.Property(x => x.ModifiedUTCDate).IsRequired();
             this.Property(x => x.ShootingAddressId).IsRequired();
             this.Property(x => x.ShootingDateUTC).IsRequired();
+            this.Property(x => x.Status).IsRequired();
 
             this.Property(x => x.MetaDescription);
             this.Property(x => x.MetaKeywords);

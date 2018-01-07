@@ -120,6 +120,32 @@ namespace FashionModeling.DAL
                 if (!context.Common.Any())
                 {
                     var lists = new Common[]{
+                        // gender
+                         new Common{
+                            Code = "GENDER" ,
+                            Description ="Gender content",
+                            IsActive= true,
+                            ModifiedBy =user.Id,
+                            CreatedBy =user.Id,
+                            Title ="Men"
+                        },
+                          new Common{
+                            Code = "GENDER" ,
+                            Description ="Gender content",
+                            IsActive= true,
+                            ModifiedBy =user.Id,
+                            CreatedBy =user.Id,
+                            Title ="Women"
+                        },
+                           new Common{
+                            Code = "GENDER" ,
+                            Description ="Gender content",
+                            IsActive= true,
+                            ModifiedBy =user.Id,
+                            CreatedBy =user.Id,
+                            Title ="Intermediate"
+                        },
+                          // Category
                         new Common{
                             Code = "CATEGORY" ,
                             Description ="Category content",

@@ -26,6 +26,7 @@ namespace FashionModeling.DAL.Mappings
             this.Property(x => x.Professions).IsRequired();
             this.Property(x => x.RoleName).IsRequired();
             this.Property(x => x.Status).IsRequired();
+            this.HasRequired(x => x.Job).WithMany(p => p.JobRoles).HasForeignKey(x => x.JobId).WillCascadeOnDelete(true);
             this.HasRequired(x => x.CreatedUser).WithMany(p => p.JobRoles).HasForeignKey(x => x.CreatedBy).WillCascadeOnDelete(false);
             this.HasRequired(x => x.ModifiedUser).WithMany(p => p.ModifiedJobRoles).HasForeignKey(x => x.ModifiedBy).WillCascadeOnDelete(false);
 

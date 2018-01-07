@@ -9,10 +9,11 @@ namespace FashionModeling.Services.Interfaces
 {
     public interface IJobServices
     {
-        Guid AddJob(JobRegisterModel model);
+        Guid AddJob(JobRegisterWithRole model);
         JobDetailsModel GetJobDetails(object id);
         JobEditModel GetJobEdit(object id);
         bool EditJob(JobEditModel model);
-        JobListModel GetJob(int page, int pageSize);
+        JobListModel GetJob(int page, int pageSize,string filter);
+        bool DeleteJob(Guid id);
     }
 }

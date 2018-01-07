@@ -70,16 +70,20 @@
     <Compile Include="CommonModel.cs" />
     <Compile Include="Dropdown.cs" />
     <Compile Include="Extensions\HtmlExtensions.cs" />
+    <Compile Include="Extensions\NumericGreaterThanAttribute.cs" />
+    <Compile Include="Extensions\NumericLessThanAttribute.cs" />
     <Compile Include="Extensions\RequiredIfAttribute.cs" />
     <Compile Include="GalleryModel.cs" />
     <Compile Include="Helpers\FileHelper.cs" />
     <Compile Include="Helpers\ImageHelper.cs" />
     <Compile Include="JobModel.cs" />
+    <Compile Include="JobRoleModel.cs" />
     <Compile Include="NotificationModel.cs" />
     <Compile Include="JobApplicationModel.cs" />
     <Compile Include="ProfileModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TagsModel.cs" />
+    <Compile Include="UserModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FashionModeling.DAL\FashionModeling.DAL.csproj">

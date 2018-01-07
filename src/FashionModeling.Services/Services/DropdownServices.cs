@@ -10,7 +10,16 @@ namespace FashionModeling.Services.Services
 {
     public class DropdownServices : IDropdownServices
     {
-        UnitOfWork unitOfWork = new UnitOfWork();        
+        UnitOfWork unitOfWork = new UnitOfWork();
+
+        public IEnumerable<SelectListItem> GetAddress()
+        {
+            return unitOfWork.AddressRepo.Get(x => x.Status == true).OrderBy(x => x.AddressLine1).Select(x => new SelectListItem()
+            {
+                Value = x.Id.ToString(),
+                Text = x.AddressLine1
+            });
+        }
 
         public IEnumerable<SelectListItem> GetCategories()
         {
@@ -56,6 +65,15 @@ namespace FashionModeling.Services.Services
         public IEnumerable<SelectListItem> GetFluentLanguages()
         {
             return unitOfWork.CommonRepo.Get(x => x.IsActive == true && x.Code.Equals("LANGUAGE")).OrderBy(x => x.Title).Select(x => new SelectListItem()
+            {
+                Value = x.Id.ToString(),
+                Text = x.Title
+            });
+        }
+
+        public IEnumerable<SelectListItem> GetGenders()
+        {
+            return unitOfWork.CommonRepo.Get(x => x.IsActive == true && x.Code.Equals("GENDER")).OrderBy(x => x.Title).Select(x => new SelectListItem()
             {
                 Value = x.Id.ToString(),
                 Text = x.Title

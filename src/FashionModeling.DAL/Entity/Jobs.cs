@@ -10,7 +10,9 @@ namespace FashionModeling.DAL.Entity
     public class Jobs: MetaEntity
     {
         [StringLength(255)]
-        public string JobTitle { get; set; }       
+        public string JobTitle { get; set; }
+        [StringLength(1024)]
+        public string JobUrl { get; set; }
         public Guid ShootingAddressId { get; set; }
         public DateTime ShootingDateUTC { get; set; }
         [StringLength(25)]
@@ -19,9 +21,9 @@ namespace FashionModeling.DAL.Entity
         public string ContactEmail { get; set; }
         public DateTime CastingFromDateUtc { get; set; }
         public DateTime CastingToDateUtc { get; set; }
-        public DateTime CastingExpiryDateUtc { get; set; }
-        [StringLength(512)]
+        public DateTime CastingExpiryDateUtc { get; set; }        
         public string Description { get; set; }
+        public bool Status { get; set; }
 
         public virtual Address Address { get; set; }
         public virtual ICollection<JobApplications> JobApplications { get; set; }

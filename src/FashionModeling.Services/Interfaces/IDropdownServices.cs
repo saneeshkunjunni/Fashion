@@ -26,6 +26,8 @@ namespace FashionModeling.Services.Interfaces
         IEnumerable<SelectListItem> GetHipSize();
         IEnumerable<SelectListItem> GetPantSize();
         IEnumerable<SelectListItem> GetJacketSize();
-
+        IEnumerable<SelectListItem> GetAddress();
+        IEnumerable<SelectListItem> GetGenders();
+        
     }
 }
